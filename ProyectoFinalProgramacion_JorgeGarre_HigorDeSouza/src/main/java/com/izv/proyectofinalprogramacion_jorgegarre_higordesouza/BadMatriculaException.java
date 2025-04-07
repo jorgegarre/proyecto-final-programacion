@@ -11,7 +11,7 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
 public class BadMatriculaException extends Exception {
 
     public BadMatriculaException(String message) {
-        super(message);
+        super("La matrículo introducida no es válida");
     }
     
 }

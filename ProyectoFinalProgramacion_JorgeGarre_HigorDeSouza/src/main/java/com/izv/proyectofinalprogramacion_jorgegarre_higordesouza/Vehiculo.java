@@ -27,23 +27,6 @@ public abstract class Vehiculo {
     public void setDueño(Persona dueño) {
         this.dueño = dueño;
     }
-
-    @Override
-    public String toString() {
-        String phrase = "";
-         switch (tipoVehiculo) {
-            case "Coche":
-                phrase = "El vehiculo con matrícula " + matricula + " es el " + tipoVehiculo + " de " + dueño;
-            case "Moto":
-                phrase = "El vehiculo con matrícula " + matricula + " es la " + tipoVehiculo + " de " + dueño;
-            case "Furgoneta":
-                phrase = "El vehiculo con matrícula " + matricula + " es la " + tipoVehiculo + " de " + dueño;
-        }
-         
-         return phrase;
-    }
-    
-    
     
     
     

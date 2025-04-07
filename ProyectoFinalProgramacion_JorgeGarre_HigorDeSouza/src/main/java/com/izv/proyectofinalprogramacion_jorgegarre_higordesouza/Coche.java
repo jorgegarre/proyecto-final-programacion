@@ -21,9 +21,6 @@ public abstract class Coche extends Vehiculo {
         this.color = color;
     }
     
-
-
-
     public void setDueño(Persona dueño) {
         this.dueño = dueño;
     }

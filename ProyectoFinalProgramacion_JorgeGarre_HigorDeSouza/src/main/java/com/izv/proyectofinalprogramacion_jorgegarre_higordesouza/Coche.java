@@ -9,20 +9,20 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
  *
  * @author jorgegarre
  */
-public abstract class Coche {
-    protected String matricula;
+public abstract class Coche extends Vehiculo {
     protected String marca;
     protected String modelo;
     protected String color;
-    protected Persona dueño;
 
-    public Coche(String matricula, String marca, String modelo, String color, Persona dueño) throws BadMatriculaException {
-        this.matricula = matricula;
+    public Coche(String marca, String modelo, String color, String matricula, Persona dueño) throws BadMatriculaException {
+        super(matricula, dueño, "Coche");
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
-        this.dueño = dueño;
     }
+    
+
+
 
     public void setDueño(Persona dueño) {
         this.dueño = dueño;

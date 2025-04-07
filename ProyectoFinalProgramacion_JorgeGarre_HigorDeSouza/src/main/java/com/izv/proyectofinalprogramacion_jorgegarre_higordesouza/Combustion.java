@@ -10,13 +10,11 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
  */
 public class Combustion extends Coche {
     protected String combustible;
-    
-    public Combustion(String matricula, String marca, String modelo, String color,String combustible, Persona dueño) throws BadMatriculaException, BadCombustibleException {
-        super(matricula, marca, modelo, color, dueño);
-        setCombustible(combustible);
-    }
 
-    
+    public Combustion(String combustible, String matricula, Persona dueño, String marca, String modelo, String color) throws BadMatriculaException, BadCombustibleException {
+        super(matricula, dueño, marca, modelo, color);
+        setCombustible(combustible.toUpperCase());
+    }
     
     public void setCombustible(String combustible) throws BadCombustibleException {
         switch (combustible.toUpperCase()) {

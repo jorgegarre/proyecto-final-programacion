@@ -11,14 +11,16 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author jorgegarre
  */
 public abstract class Hibrido extends Coche {
-    protected int autonomia_real;
+    protected final int autonomia_real;
     protected int autonomia_total;
 
-    public Hibrido(int autonomia_real, int autonomia_total, String matricula, String marca, String modelo, String color, Persona dueño) throws BadMatriculaException {
-        super(matricula, marca, modelo, color, dueño);
+    public Hibrido(int autonomia_real, int autonomia_total, String matricula, Persona dueño, String marca, String modelo, String color) throws BadMatriculaException {
+        super(matricula, dueño, marca, modelo, color);
         this.autonomia_real = autonomia_real;
         this.autonomia_total = autonomia_total;
     }
+
+    
 
     public void setAutonomia_total(int autonomia_total) {
         this.autonomia_total = autonomia_total;

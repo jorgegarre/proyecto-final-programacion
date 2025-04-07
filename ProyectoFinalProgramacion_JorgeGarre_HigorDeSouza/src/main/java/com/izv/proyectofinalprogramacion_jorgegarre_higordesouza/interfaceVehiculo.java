@@ -8,7 +8,7 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
  *
  * @author jorgegarre
  */
-public interface interfaceCoche {
-    void aparcar(Coche coche, int plaza);
+public interface interfaceVehiculo {
+    void aparcar(Vehiculo vehiculo, int plaza);
     void salir();
 }

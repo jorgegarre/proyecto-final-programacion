@@ -11,11 +11,16 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
 public abstract class Vehiculo {
     protected String matricula;
     protected Persona dueño;
-    protected String  tipoVehiculo;
+    protected String marca;
+    protected String modelo;
+    protected String color;
+    protected final String  tipoVehiculo;
 
-    public Vehiculo(String matricula, Persona dueño, String tipoVehiculo) throws BadMatriculaException {
-        this.matricula = matricula;
-        this.dueño = dueño;
+    public Vehiculo(String matricula, Persona dueño, String marca, String modelo, String color, String tipoVehiculo) throws BadMatriculaException {
+        setMatricula(matricula);
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
         this.tipoVehiculo = tipoVehiculo;
     }
 
@@ -23,9 +28,28 @@ public abstract class Vehiculo {
         if (matricula.equals("")) throw new BadMatriculaException("");
         else this.matricula = matricula;
     }
+    public String getMatricula() {
+        return matricula;
+    }
 
-    public void setDueño(Persona dueño) {
-        this.dueño = dueño;
+    public Persona getDueño() {
+        return dueño;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getTipoVehiculo() {
+        return tipoVehiculo;
     }
     
     

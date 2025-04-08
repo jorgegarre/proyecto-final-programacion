@@ -8,6 +8,10 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
  *
  * @author jorgegarre
  */
-public class FurgonetaDeMayorLongitudException {
+public class FurgonetaDeMayorLongitudException extends Exception {
+
+    public FurgonetaDeMayorLongitudException(String message) {
+        super(message);
+    }
     
 }

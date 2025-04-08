@@ -16,10 +16,15 @@ public class Furgoneta extends Vehiculo {
         super(matricula, dueño, marca, modelo, color, tipoVehiculo);
         this.longitud = longitud;
     }
+
+    public double getLongitud() {
+        return longitud;
+    }
     
     @Override
     public String toString() {
-        return "La furgoneta con matrícula " + matricula + " su dueño es " + dueño + " es un " + marca + modelo + " de color " + color;
+        return super.toString() + ", longitud: " + longitud + " metros.";
     }
+
     
 }

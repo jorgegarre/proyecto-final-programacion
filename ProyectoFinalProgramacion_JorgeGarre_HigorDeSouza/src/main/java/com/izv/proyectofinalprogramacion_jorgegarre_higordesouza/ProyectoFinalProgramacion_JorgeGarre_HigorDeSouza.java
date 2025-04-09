@@ -54,11 +54,8 @@ public class ProyectoFinalProgramacion_JorgeGarre_HigorDeSouza {
             Persona dueño = new Persona("Carlos", "Pérez", "12345678A", (byte) 30);
 
             // Crear un coche de combustión
-            Combustion coche = new Combustion("Gasolin", "1234ABC", dueño, "Toyota", "Corolla", "Rojo");
-
-            // Opcionalmente puedes usar setCombustible para validar (aunque ya lo pusiste en el constructor)
-            coche.setCombustible("Gasolina"); // o "Diesel"
-
+            Combustion coche = new Combustion("Gasolina", "1234ABC", dueño, "Toyota", "Corolla", "Rojo");
+            
             // Mostrar información del coche
             System.out.println("Coche creado:");
             System.out.println(coche.toString());

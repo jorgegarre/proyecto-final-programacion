@@ -12,8 +12,8 @@ public class Furgoneta extends Vehiculo {
 
     protected double longitud;
 
-    public Furgoneta(double longitud, String matricula, Persona dueño, String marca, String modelo, String color, String tipoVehiculo) throws BadMatriculaException {
-        super(matricula, dueño, marca, modelo, color, tipoVehiculo);
+    public Furgoneta(double longitud, String matricula, Persona dueño, String marca, String modelo, String color) throws BadMatriculaException {
+        super(matricula, dueño, marca, modelo, color, "Furgoneta");
         this.longitud = longitud;
     }
 

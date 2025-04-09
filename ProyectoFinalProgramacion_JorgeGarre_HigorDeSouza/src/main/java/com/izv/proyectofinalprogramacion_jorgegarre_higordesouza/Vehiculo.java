@@ -52,6 +52,8 @@ public abstract class Vehiculo {
         return tipoVehiculo;
     }
     
+    
+    
     @Override
     public String toString() {
         return tipoVehiculo + " con matrícula " + matricula + ": " + marca + " " + modelo +

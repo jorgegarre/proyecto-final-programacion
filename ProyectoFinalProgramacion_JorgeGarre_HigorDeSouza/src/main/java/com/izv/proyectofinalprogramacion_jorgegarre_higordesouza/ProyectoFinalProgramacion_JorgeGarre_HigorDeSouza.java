@@ -48,25 +48,37 @@ public class ProyectoFinalProgramacion_JorgeGarre_HigorDeSouza {
 //            System.out.println(coche);
 //        }
 //
+    List<Persona> clientes = new ArrayList<>();
 
- try {
-            // Crear una persona (dueño del coche)
-            Persona dueño = new Persona("Carlos", "Pérez", "12345678A", (byte) 30);
 
-            // Crear un coche de combustión
-            Combustion coche = new Combustion("Gasolina", "1234ABC", dueño, "Toyota", "Corolla", "Rojo");
-            
-            // Mostrar información del coche
-            System.out.println("Coche creado:");
-            System.out.println(coche.toString());
-            System.out.println("Tipo de combustible: " + coche.getCombustible());
+     try {
+            // Crear personas
+            Persona p1 = new Persona("Lucía", "Gómez", "12345678A", (byte) 25);
+            Persona p2 = new Persona("Carlos", "Pérez", "87654321B", (byte) 40);
+            Persona p3 = new Persona("María", "López", "11223344C", (byte) 31);
 
-        } catch (BadAgeException | BadDniException | IncorrectNameException | BadMatriculaException | BadCombustibleException e) {
-            System.out.println("Error al crear el coche: " + e.getMessage());
+            // Crear vehículos
+            Vehiculo coche1 = new Coche("1234ABC", "COCHE");
+            Vehiculo coche2 = new Coche("5678DEF", "COCHE");
+            Vehiculo moto1 = new Moto("M123XYZ", "MOTO");
+            Vehiculo furgoneta1 = new Furgoneta("F444QWE", "FURGONETA", 6.5);
+            Vehiculo coche3 = new Coche("9999ZZZ", "COCHE");
+
+            // Crear el Map
+            Map<Persona, List<Vehiculo>> personasVehiculos = new HashMap<>();
+
+            // Asignar vehículos a personas
+            personasVehiculos.put(p1, new ArrayList<>(List.of(coche1, moto1)));
+            personasVehiculos.put(p2, new ArrayList<>(List.of(coche2, furgoneta1)));
+            personasVehiculos.put(p3, new ArrayList<>(List.of(coche3)));
+
+        } catch (BadMatriculaException | FurgonetaDeMayorLongitudException e) {
+            System.out.println("Error al crear vehículo: " + e.getMessage());
         }
-    }
+    
     
     }
+}
     
     
 

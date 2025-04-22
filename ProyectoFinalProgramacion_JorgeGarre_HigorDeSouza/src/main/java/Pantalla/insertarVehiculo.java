@@ -128,14 +128,12 @@ public class insertarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        userMatricula.setText("Matricula");
         userMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userMatriculaActionPerformed(evt);
             }
         });
 
-        userMarca.setText("Marca");
         userMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userMarcaActionPerformed(evt);
@@ -171,6 +169,12 @@ public class insertarVehiculo extends javax.swing.JFrame {
         });
 
         jLabel6.setText("Introduce tu nombre Completo");
+
+        NombreCompleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreCompletoActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Introduce DNI");
 
@@ -348,6 +352,12 @@ public class insertarVehiculo extends javax.swing.JFrame {
             Persona pepe = new Persona(nombreCompleto, dni);
             Combustion coche = new Combustion("Gasolina", matricula, pepe, marca, modelo, color);
             userMatricula.setText(coche.getMatricula());
+            userModelo.setText(coche.getModelo());
+            userMarca.setText(coche.getMarca());
+            userColor.setText(coche.getColor());
+            userTipoVehiculo.setText(coche.getTipoVehiculo());
+            NombreCompleto.setText(pepe.getnombreCompleto());
+            userDni.setText(pepe.getDni());
             
         } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
             System.out.println(e.getMessage());
@@ -361,8 +371,12 @@ public class insertarVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_userTipoVehiculoActionPerformed
 
     private void DniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DniActionPerformed
-        // TODO add your handling code here:
+        dni = Dni.getText();
     }//GEN-LAST:event_DniActionPerformed
+
+    private void NombreCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCompletoActionPerformed
+        nombreCompleto = NombreCompleto.getText();
+    }//GEN-LAST:event_NombreCompletoActionPerformed
 
     /**
      * @param args the command line arguments

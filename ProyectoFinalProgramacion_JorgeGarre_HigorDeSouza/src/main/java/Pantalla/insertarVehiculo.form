@@ -236,17 +236,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="userMatricula">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Matricula"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userMatriculaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="userMarca">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Marca"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userMarcaActionPerformed"/>
           </Events>
@@ -289,6 +283,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="NombreCompleto">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NombreCompletoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>

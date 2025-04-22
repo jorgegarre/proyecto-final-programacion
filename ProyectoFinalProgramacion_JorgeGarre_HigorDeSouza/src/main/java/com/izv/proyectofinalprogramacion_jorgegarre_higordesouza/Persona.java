@@ -12,7 +12,7 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
 public class Persona {
     
     // Atributos
-    protected String nombreCompleto;
+    protected String NombreCompleto;
     protected String dni;
     
     
@@ -21,13 +21,13 @@ public class Persona {
     // Métodos
     
     public Persona(String nombre, String dni) throws IncorrectNameException, BadDniException {
-        setnombreCompleto(nombre);
+        setNombreCompleto(nombre);
         setDni(dni);
     }
 
-    public void setnombreCompleto(String nombre) throws IncorrectNameException {
+    public void setNombreCompleto(String nombre) throws IncorrectNameException {
         if(nombre.equals("")) throw new IncorrectNameException("Nombre no valido");
-        else this.nombreCompleto = nombre;
+        else this.NombreCompleto = nombre;
     }
 
  
@@ -64,8 +64,8 @@ public class Persona {
         }
     }
 
-    public String getnombreCompleto() {
-        return nombreCompleto;
+    public String getNombreCompleto() {
+        return NombreCompleto;
     }
     
     public String getDni() {
@@ -77,7 +77,7 @@ public class Persona {
     
     @Override
     public String toString() {
-        return nombreCompleto + " con dni " + dni;
+        return NombreCompleto + " con dni " + dni;
     }
 
 

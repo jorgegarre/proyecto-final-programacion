@@ -4,7 +4,7 @@
  */
 package Pantalla;
 
-import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.BadCombustibleException;
+import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.*;
 import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.BadDniException;
 import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.BadMatriculaException;
 import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.Combustion;
@@ -15,7 +15,7 @@ import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.Persona;
  *
  * @author jorgegarre
  */
-public class insertarVehiculo extends javax.swing.JFrame {
+public class AparcarVehiculo extends javax.swing.JFrame {
     
     String matricula;
     String marca;
@@ -28,7 +28,7 @@ public class insertarVehiculo extends javax.swing.JFrame {
     /**
      * Creates new form Prueba
      */
-    public insertarVehiculo() {
+    public AparcarVehiculo() {
         initComponents();
     }
 
@@ -67,6 +67,8 @@ public class insertarVehiculo extends javax.swing.JFrame {
         Dni = new javax.swing.JTextField();
         userNombreCompleto = new javax.swing.JTextField();
         userDni = new javax.swing.JTextField();
+        inicioBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,12 +130,14 @@ public class insertarVehiculo extends javax.swing.JFrame {
             }
         });
 
+        userMatricula.setText("Matrícula");
         userMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userMatriculaActionPerformed(evt);
             }
         });
 
+        userMarca.setText("Marca");
         userMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userMarcaActionPerformed(evt);
@@ -147,14 +151,14 @@ public class insertarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        userColor.setText("COlor");
+        userColor.setText("Color");
         userColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userColorActionPerformed(evt);
             }
         });
 
-        Boton.setText("Ver datos");
+        Boton.setText("Crear Vehiculo");
         Boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonActionPerformed(evt);
@@ -185,8 +189,27 @@ public class insertarVehiculo extends javax.swing.JFrame {
         });
 
         userNombreCompleto.setText("Nombre Completo");
+        userNombreCompleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNombreCompletoActionPerformed(evt);
+            }
+        });
 
         userDni.setText("DNI");
+
+        inicioBtn.setText("Volver al inicio");
+        inicioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inicioBtnActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -211,26 +234,37 @@ public class insertarVehiculo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(userMarca, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(userModelo, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(userColor, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userTipoVehiculo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(userTipoVehiculo, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Boton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(userMatricula))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Dni)
-                                    .addComponent(userNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(userDni)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(NombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Dni)
+                                            .addComponent(userNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                            .addComponent(userDni)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(inicioBtn))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(138, 138, 138)
                         .addComponent(jLabel6)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,10 +314,14 @@ public class insertarVehiculo extends javax.swing.JFrame {
                         .addComponent(checkMoto))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(Boton)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Boton)
+                            .addComponent(inicioBtn))))
                 .addGap(5, 5, 5)
                 .addComponent(checkFurgoneta)
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(0, 99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -348,6 +386,14 @@ public class insertarVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_userColorActionPerformed
 
     private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
+            
+//        switch (tipoVehiculo.toUpperCase()) {
+//            case "COCHE":
+//                
+//                
+//        }
+    
+
         try {
             Persona pepe = new Persona(nombreCompleto, dni);
             Combustion coche = new Combustion("Gasolina", matricula, pepe, marca, modelo, color);
@@ -356,8 +402,9 @@ public class insertarVehiculo extends javax.swing.JFrame {
             userMarca.setText(coche.getMarca());
             userColor.setText(coche.getColor());
             userTipoVehiculo.setText(coche.getTipoVehiculo());
-            NombreCompleto.setText(pepe.getnombreCompleto());
+            userNombreCompleto.setText(pepe.getNombreCompleto());
             userDni.setText(pepe.getDni());
+            
             
         } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
             System.out.println(e.getMessage());
@@ -378,10 +425,33 @@ public class insertarVehiculo extends javax.swing.JFrame {
         nombreCompleto = NombreCompleto.getText();
     }//GEN-LAST:event_NombreCompletoActionPerformed
 
+    private void inicioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioBtnActionPerformed
+        InicioScreen pantalla = new InicioScreen();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        this.dispose();    }//GEN-LAST:event_inicioBtnActionPerformed
+
+    private void userNombreCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNombreCompletoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNombreCompletoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
-     * @param args the command line arguments
      */
-  
+    public class Main {
+     public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            AparcarVehiculo pantalla = new AparcarVehiculo();
+            pantalla.setVisible(true);
+            pantalla.setLocationRelativeTo(null); // Centrar ventana
+        });
+    }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton;
@@ -394,6 +464,8 @@ public class insertarVehiculo extends javax.swing.JFrame {
     private javax.swing.JRadioButton checkCoche;
     private javax.swing.JRadioButton checkFurgoneta;
     private javax.swing.JRadioButton checkMoto;
+    private javax.swing.JButton inicioBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

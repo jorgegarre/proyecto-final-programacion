@@ -4,9 +4,9 @@
 
 package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
 
-import Pantalla.insertarVehiculo;
-import java.util.ArrayList;
-import java.util.List;
+
+import Pantalla.*;
+
 
 /**
  *
@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class ProyectoFinalProgramacion_JorgeGarre_HigorDeSouza {
     public static void main(String[] args) {
-    javax.swing.SwingUtilities.invokeLater(() -> {
 //    List<Persona> clientes = new ArrayList<>();
 //    List<Coche> coches = new ArrayList<>();
 //        
@@ -51,14 +50,12 @@ public class ProyectoFinalProgramacion_JorgeGarre_HigorDeSouza {
 //        }
 // insertarVehiculo panta = new insertarVehiculo();
 
-
-
-    insertarVehiculo panta = new insertarVehiculo();
+    InicioScreen panta = new InicioScreen();
     panta.setVisible(true);
     panta.setLocationRelativeTo(null);
 
     
-    });
+    
     }
 }
     

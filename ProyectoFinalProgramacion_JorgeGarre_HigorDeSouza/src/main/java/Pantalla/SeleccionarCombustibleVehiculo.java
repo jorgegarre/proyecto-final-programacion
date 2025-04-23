@@ -18,15 +18,14 @@ import Pantalla.*;
 public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
     private aparcarVehiculo AparcarVehiculo;
 
-     String tipoCombustion;
+     String tipoCombustible;
     /**
      * Creates new form seleccionarCombustibleVehiculo
      */
     public SeleccionarCombustibleVehiculo(aparcarVehiculo AparcarVehiculo) {
-        initComponents();
-
+       this.AparcarVehiculo = AparcarVehiculo; // <---- ¡Esta línea es esencial!
+       initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +42,7 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
         DieselButton = new javax.swing.JRadioButton();
         HibridoTotalButton = new javax.swing.JRadioButton();
         HibridoEnchufableButton = new javax.swing.JRadioButton();
+        mensajeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,12 +93,13 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
+                .addGap(140, 140, 140)
                 .addComponent(Button)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mensajeLabel)
                     .addComponent(GasolinaButton)
                     .addComponent(jLabel1)
                     .addComponent(HibridoTotalButton)
@@ -119,36 +120,39 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
                 .addComponent(HibridoTotalButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(HibridoEnchufableButton)
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
+                .addComponent(mensajeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Button)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
-      if (tipoCombustion != null && AparcarVehiculo != null) {
-        AparcarVehiculo.setTipoCombustible(tipoCombustion); // ✅ Correcto
-    }
+        if (tipoCombustible == null) {
+            mensajeLabel.setText("Por favor introduce el combustible de tu coche");
+        }
         
+        AparcarVehiculo.setTipoCombustible(tipoCombustible);
         this.dispose();
     }//GEN-LAST:event_ButtonActionPerformed
 
     private void GasolinaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GasolinaButtonActionPerformed
-        tipoCombustion = "GASOLINA";
+        tipoCombustible = "GASOLINA";
     }//GEN-LAST:event_GasolinaButtonActionPerformed
 
     private void DieselButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DieselButtonActionPerformed
-        tipoCombustion = "DIESEL";
+        tipoCombustible = "DIESEL";
     }//GEN-LAST:event_DieselButtonActionPerformed
 
     private void HibridoTotalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibridoTotalButtonActionPerformed
-        tipoCombustion = "HIBRIDO TOTAL";
+        tipoCombustible = "HIBRIDO TOTAL";
     }//GEN-LAST:event_HibridoTotalButtonActionPerformed
 
     private void HibridoEnchufableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibridoEnchufableButtonActionPerformed
-        tipoCombustion = "HIBRIDO ENCHUFABLE";
+        tipoCombustible = "HIBRIDO ENCHUFABLE";
     }//GEN-LAST:event_HibridoEnchufableButtonActionPerformed
 
     /**
@@ -187,8 +191,8 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
 //        });
 //    }
 
-    public String getTipoVehiculo() {
-        return tipoCombustion;
+    public String getTipoCombustible() {
+        return tipoCombustible;
     }
 
     
@@ -200,5 +204,6 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
     private javax.swing.JRadioButton HibridoEnchufableButton;
     private javax.swing.JRadioButton HibridoTotalButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel mensajeLabel;
     // End of variables declaration//GEN-END:variables
 }

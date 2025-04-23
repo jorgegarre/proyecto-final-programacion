@@ -66,7 +66,8 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         userDni = new javax.swing.JTextField();
         inicioBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        Combustion = new javax.swing.JTextField();
+        userCombustion = new javax.swing.JTextField();
+        combustibleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,12 +213,14 @@ public class aparcarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        Combustion.setText("Combustion");
-        Combustion.addActionListener(new java.awt.event.ActionListener() {
+        userCombustion.setText("Combustion");
+        userCombustion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CombustionActionPerformed(evt);
+                userCombustionActionPerformed(evt);
             }
         });
+
+        combustibleLabel.setText("Combustible");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -250,10 +253,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                                     .addComponent(userTipoVehiculo, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Boton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(userMatricula))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(inicioBtn))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -266,15 +266,20 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                                                     .addComponent(userDni)))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(46, 46, 46)
-                                                .addComponent(Combustion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                                .addComponent(userCombustion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(inicioBtn)
+                                            .addComponent(combustibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(138, 138, 138)
                         .addComponent(jLabel6)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(179, 179, 179)
                 .addComponent(jButton1)
@@ -319,7 +324,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Combustion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userCombustion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jLabel7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,11 +338,16 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Boton)
                             .addComponent(inicioBtn))))
-                .addGap(5, 5, 5)
-                .addComponent(checkFurgoneta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(checkFurgoneta))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(combustibleLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(0, 99, Short.MAX_VALUE))
+                .addGap(0, 94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -404,31 +414,35 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
             
         switch (tipoVehiculo.toUpperCase()) {
-//            case "COCHE":
-//                    SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo();
-//                    pantalla.setVisible(true);
-//                    pantalla.setLocationRelativeTo(null);
-//                    
-//                   
+            case "COCHE":
+                    SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo(this);
+                    pantalla.setVisible(true);
+                    pantalla.setLocationRelativeTo(null);
+                    combustibleLabel.setText(tipoCombustible);
+                    
+                   
                 
         }
     
 
         try {
             Persona pepe = new Persona(nombreCompleto, dni);
-            Combustion coche = new Combustion("Gasolina", matricula, pepe, marca, modelo, color);
+            Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
             userMatricula.setText(coche.getMatricula());
             userModelo.setText(coche.getModelo());
             userMarca.setText(coche.getMarca());
             userColor.setText(coche.getColor());
             userTipoVehiculo.setText(coche.getTipoVehiculo());
+            userCombustion.setText(coche.getCombustible());
             
             userNombreCompleto.setText(pepe.getNombreCompleto());
             userDni.setText(pepe.getDni());
             
             
         } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
-            System.out.println(e.getMessage());
+            PantallaExcepciones pantalla = new PantallaExcepciones(e.getMessage());
+            pantalla.setVisible(true);
+            pantalla.setLocationRelativeTo(null);
         }
         
         
@@ -460,11 +474,11 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo(this);
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
+        combustibleLabel.setText(tipoCombustible);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void CombustionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CombustionActionPerformed
-        Combustion.setText(tipoCombustible);
-    }//GEN-LAST:event_CombustionActionPerformed
+    private void userCombustionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userCombustionActionPerformed
+    }//GEN-LAST:event_userCombustionActionPerformed
 
     public void setTipoCombustible(String tipoCombustible) {
         this.tipoCombustible = tipoCombustible;
@@ -488,7 +502,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton;
     private javax.swing.JTextField Color;
-    private javax.swing.JTextField Combustion;
     private javax.swing.JTextField Dni;
     private javax.swing.JTextField Marca;
     private javax.swing.JTextField Matricula;
@@ -498,6 +511,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private javax.swing.JRadioButton checkCoche;
     private javax.swing.JRadioButton checkFurgoneta;
     private javax.swing.JRadioButton checkMoto;
+    private javax.swing.JLabel combustibleLabel;
     private javax.swing.JButton inicioBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -510,6 +524,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField userColor;
+    private javax.swing.JTextField userCombustion;
     private javax.swing.JTextField userDni;
     private javax.swing.JTextField userMarca;
     private javax.swing.JTextField userMatricula;

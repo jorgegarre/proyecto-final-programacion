@@ -10,7 +10,7 @@ import Pantalla.*;
  *
  * @author jorgegarre
  */
-public class AparcarVehiculo extends javax.swing.JFrame {
+public class aparcarVehiculo extends javax.swing.JFrame {
     
     String matricula;
     String marca;
@@ -24,7 +24,7 @@ public class AparcarVehiculo extends javax.swing.JFrame {
     /**
      * Creates new form Prueba
      */
-    public AparcarVehiculo() {
+    public aparcarVehiculo() {
         initComponents();
     }
 
@@ -37,6 +37,7 @@ public class AparcarVehiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        VehiculoSelector = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -104,6 +105,7 @@ public class AparcarVehiculo extends javax.swing.JFrame {
 
         jLabel5.setText("Introduce el color");
 
+        VehiculoSelector.add(checkCoche);
         checkCoche.setText("Coche");
         checkCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +115,7 @@ public class AparcarVehiculo extends javax.swing.JFrame {
 
         jLabel7.setText("Introduce tipo de Vehiculo");
 
+        VehiculoSelector.add(checkMoto);
         checkMoto.setText("Moto");
         checkMoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +123,7 @@ public class AparcarVehiculo extends javax.swing.JFrame {
             }
         });
 
+        VehiculoSelector.add(checkFurgoneta);
         checkFurgoneta.setText("Furgoneta");
         checkFurgoneta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -474,7 +478,7 @@ public class AparcarVehiculo extends javax.swing.JFrame {
     public class Main {
      public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(() -> {
-            AparcarVehiculo pantalla = new AparcarVehiculo();
+            aparcarVehiculo pantalla = new aparcarVehiculo();
             pantalla.setVisible(true);
             pantalla.setLocationRelativeTo(null); // Centrar ventana
         });
@@ -490,6 +494,7 @@ public class AparcarVehiculo extends javax.swing.JFrame {
     private javax.swing.JTextField Matricula;
     private javax.swing.JTextField Modelo;
     private javax.swing.JTextField NombreCompleto;
+    private javax.swing.ButtonGroup VehiculoSelector;
     private javax.swing.JRadioButton checkCoche;
     private javax.swing.JRadioButton checkFurgoneta;
     private javax.swing.JRadioButton checkMoto;

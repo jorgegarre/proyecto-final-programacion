@@ -16,13 +16,13 @@ import Pantalla.*;
  * @author jorge
  */
 public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
-    private AparcarVehiculo AparcarVehiculo;
+    private aparcarVehiculo AparcarVehiculo;
 
      String tipoCombustion;
     /**
      * Creates new form seleccionarCombustibleVehiculo
      */
-    public SeleccionarCombustibleVehiculo(AparcarVehiculo AparcarVehiculo) {
+    public SeleccionarCombustibleVehiculo(aparcarVehiculo AparcarVehiculo) {
         initComponents();
 
     }

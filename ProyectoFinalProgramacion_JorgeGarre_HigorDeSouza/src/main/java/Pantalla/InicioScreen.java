@@ -125,7 +125,7 @@ public class InicioScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aparcarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aparcarBtnActionPerformed
-        AparcarVehiculo pantalla = new AparcarVehiculo();
+        aparcarVehiculo pantalla = new aparcarVehiculo();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
         this.dispose();

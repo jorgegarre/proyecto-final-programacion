@@ -9,18 +9,20 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import Pantalla.*;
 
 /**
  *
  * @author jorge
  */
 public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
+    private AparcarVehiculo AparcarVehiculo;
 
-    private String tipoVehiculo;
+     String tipoCombustion;
     /**
      * Creates new form seleccionarCombustibleVehiculo
      */
-    public SeleccionarCombustibleVehiculo() {
+    public SeleccionarCombustibleVehiculo(AparcarVehiculo AparcarVehiculo) {
         initComponents();
 
     }
@@ -34,6 +36,7 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        CombustibleButton = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         Button = new javax.swing.JButton();
         GasolinaButton = new javax.swing.JRadioButton();
@@ -53,6 +56,7 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
             }
         });
 
+        CombustibleButton.add(GasolinaButton);
         GasolinaButton.setText("Gasolina ");
         GasolinaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +64,7 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
             }
         });
 
+        CombustibleButton.add(DieselButton);
         DieselButton.setText("Diesel");
         DieselButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +72,7 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
             }
         });
 
+        CombustibleButton.add(HibridoTotalButton);
         HibridoTotalButton.setText("Hibrido Total");
         HibridoTotalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +80,7 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
             }
         });
 
+        CombustibleButton.add(HibridoEnchufableButton);
         HibridoEnchufableButton.setText("Hibrido Enchufable");
         HibridoEnchufableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,28 +92,28 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(Button)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GasolinaButton)
                     .addComponent(jLabel1)
-                    .addComponent(DieselButton)
                     .addComponent(HibridoTotalButton)
-                    .addComponent(HibridoEnchufableButton))
+                    .addComponent(HibridoEnchufableButton)
+                    .addComponent(DieselButton))
                 .addGap(105, 105, 105))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(Button)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(41, 41, 41)
                 .addComponent(GasolinaButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DieselButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(HibridoTotalButton)
@@ -121,68 +128,73 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
+      if (tipoCombustion != null && AparcarVehiculo != null) {
+        AparcarVehiculo.setTipoCombustible(tipoCombustion); // ✅ Correcto
+    }
+        
         this.dispose();
     }//GEN-LAST:event_ButtonActionPerformed
 
     private void GasolinaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GasolinaButtonActionPerformed
-        tipoVehiculo = "GASOLINA";
+        tipoCombustion = "GASOLINA";
     }//GEN-LAST:event_GasolinaButtonActionPerformed
 
     private void DieselButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DieselButtonActionPerformed
-        tipoVehiculo = "DIESEL";
+        tipoCombustion = "DIESEL";
     }//GEN-LAST:event_DieselButtonActionPerformed
 
     private void HibridoTotalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibridoTotalButtonActionPerformed
-        tipoVehiculo = "HIBRIDO TOTAL";
+        tipoCombustion = "HIBRIDO TOTAL";
     }//GEN-LAST:event_HibridoTotalButtonActionPerformed
 
     private void HibridoEnchufableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibridoEnchufableButtonActionPerformed
-        tipoVehiculo = "HIBRIDO ENCHUFABLE";
+        tipoCombustion = "HIBRIDO ENCHUFABLE";
     }//GEN-LAST:event_HibridoEnchufableButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SeleccionarCombustibleVehiculo().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SeleccionarCombustibleVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SeleccionarCombustibleVehiculo().setVisible(true);
+//            }
+//        });
+//    }
 
     public String getTipoVehiculo() {
-        return tipoVehiculo;
+        return tipoCombustion;
     }
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button;
+    private javax.swing.ButtonGroup CombustibleButton;
     private javax.swing.JRadioButton DieselButton;
     private javax.swing.JRadioButton GasolinaButton;
     private javax.swing.JRadioButton HibridoEnchufableButton;

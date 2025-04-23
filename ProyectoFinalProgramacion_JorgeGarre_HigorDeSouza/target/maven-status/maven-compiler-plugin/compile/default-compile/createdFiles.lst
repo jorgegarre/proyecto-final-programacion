@@ -49,7 +49,6 @@ Pantalla\AparcarVehiculo$6.class
 Pantalla\InicioScreen$1.class
 com\izv\proyectofinalprogramacion_jorgegarre_higordesouza\BadAgeException.class
 Pantalla\LoginContabilidad$2.class
-Pantalla\SeleccionarCombustibleVehiculo$6.class
 Pantalla\AparcarVehiculo$13.class
 com\izv\proyectofinalprogramacion_jorgegarre_higordesouza\BadCombustibleException.class
 Pantalla\AparcarVehiculo$Main.class
@@ -58,3 +57,4 @@ Pantalla\SeleccionarCombustibleVehiculo.class
 Pantalla\AparcarVehiculo$9.class
 com\izv\proyectofinalprogramacion_jorgegarre_higordesouza\Combustion.class
 Pantalla\AparcarVehiculo$16.class
+Pantalla\AparcarVehiculo$19.class

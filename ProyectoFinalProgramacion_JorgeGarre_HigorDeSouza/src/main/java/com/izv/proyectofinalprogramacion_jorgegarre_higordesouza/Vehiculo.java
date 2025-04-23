@@ -9,12 +9,15 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
  * @author jorgegarre
  */
 public abstract class Vehiculo {
+    
     protected String matricula;
     protected Persona dueño;
     protected String marca;
     protected String modelo;
     protected String color;
     protected final String  tipoVehiculo;
+    
+   
 
     public Vehiculo(String matricula, Persona dueño, String marca, String modelo, String color, String tipoVehiculo) throws BadMatriculaException {
         setMatricula(matricula);

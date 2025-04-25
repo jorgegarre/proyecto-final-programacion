@@ -20,7 +20,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     String nombreCompleto;
     String dni;
     String tipoCombustible;
-    Double longitud;
+    int longitud;
 
     /**
      * Creates new form Prueba
@@ -66,7 +66,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         userNombreCompleto = new javax.swing.JTextField();
         userDni = new javax.swing.JTextField();
         inicioBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         userCombustion = new javax.swing.JTextField();
         combustibleLabel = new javax.swing.JLabel();
         showTipoVehiculo = new javax.swing.JLabel();
@@ -208,13 +207,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         userCombustion.setText("Combustion");
         userCombustion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,10 +274,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         .addGap(138, 138, 138)
                         .addComponent(jLabel6)))
                 .addGap(55, 55, 55))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(showTipoVehiculo)
@@ -351,9 +339,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(combustibleLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(showTipoVehiculo)
                 .addGap(48, 48, 48))
         );
@@ -376,31 +362,28 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatriculaActionPerformed
-        matricula = Matricula.getText();
+
     }//GEN-LAST:event_MatriculaActionPerformed
 
     private void MarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcaActionPerformed
-        marca = Marca.getText();
     }//GEN-LAST:event_MarcaActionPerformed
 
     private void ModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModeloActionPerformed
-        modelo = Modelo.getText();
     }//GEN-LAST:event_ModeloActionPerformed
 
     private void ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColorActionPerformed
-        color = Color.getText();
     }//GEN-LAST:event_ColorActionPerformed
 
     private void checkCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCocheActionPerformed
-        tipoVehiculo = "Coche";
+        tipoVehiculo = "COCHE";
     }//GEN-LAST:event_checkCocheActionPerformed
 
     private void checkMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMotoActionPerformed
-        tipoVehiculo = "Moto";
+        tipoVehiculo = "MOTO";
     }//GEN-LAST:event_checkMotoActionPerformed
 
     private void checkFurgonetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFurgonetaActionPerformed
-        tipoVehiculo = "Furgoneta";
+        tipoVehiculo = "FURGONETA";
     }//GEN-LAST:event_checkFurgonetaActionPerformed
 
     private void userMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMatriculaActionPerformed
@@ -421,33 +404,106 @@ public class aparcarVehiculo extends javax.swing.JFrame {
 
     private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
 
+        matricula = Matricula.getText();
+        marca = Marca.getText();
+        modelo = Modelo.getText();
+        color = Color.getText();
+        dni = Dni.getText();
+        nombreCompleto = NombreCompleto.getText();
+
         showTipoVehiculo.setText(tipoVehiculo);
 
         switch (tipoVehiculo.toUpperCase()) {
             case "COCHE":
-                SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo(this);
-                pantalla.setVisible(true);
+                SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo(this, this);
                 pantalla.setLocationRelativeTo(null);
+                pantalla.setVisible(true);
+
+                tipoCombustible = pantalla.getTipoCombustible();
                 combustibleLabel.setText(tipoCombustible);
 
-                try {
-                    Persona pepe = new Persona(nombreCompleto, dni);
-                    Combustion coche = new Combustion("Gasolina", matricula, pepe, marca, modelo, color);
-                    userMatricula.setText(coche.getMatricula());
-                    userModelo.setText(coche.getModelo());
-                    userMarca.setText(coche.getMarca());
-                    userColor.setText(coche.getColor());
-                    userTipoVehiculo.setText(coche.getTipoVehiculo());
-                    userCombustion.setText(coche.getCombustible());
+                switch (tipoCombustible.toUpperCase()) {
+                    case "GASOLINA":
+                        try {
+                            Persona pepe = new Persona(nombreCompleto, dni);
+                            Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
+                            userMatricula.setText(coche.getMatricula());
+                            userModelo.setText(coche.getModelo());
+                            userMarca.setText(coche.getMarca());
+                            userColor.setText(coche.getColor());
+                            userTipoVehiculo.setText(coche.getTipoVehiculo());
+                            userCombustion.setText(coche.getCombustible());
 
-                    userNombreCompleto.setText(pepe.getNombreCompleto());
-                    userDni.setText(pepe.getDni());
+                            userNombreCompleto.setText(pepe.getNombreCompleto());
+                            userDni.setText(pepe.getDni());
 
-                } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
-                    PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
-                    pantallaExcept.setVisible(true);
-                    pantallaExcept.setLocationRelativeTo(null);
+                        } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
+                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
+                            pantallaExcept.setVisible(true);
+                            pantallaExcept.setLocationRelativeTo(null);
+                        }
+                        break;
+                    case "DIESEL":
+                        try {
+                            Persona pepe = new Persona(nombreCompleto, dni);
+                            Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
+                            userMatricula.setText(coche.getMatricula());
+                            userModelo.setText(coche.getModelo());
+                            userMarca.setText(coche.getMarca());
+                            userColor.setText(coche.getColor());
+                            userTipoVehiculo.setText(coche.getTipoVehiculo());
+                            userCombustion.setText(coche.getCombustible());
+
+                            userNombreCompleto.setText(pepe.getNombreCompleto());
+                            userDni.setText(pepe.getDni());
+
+                        } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
+                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
+                            pantallaExcept.setVisible(true);
+                            
+                            pantallaExcept.setLocationRelativeTo(null);
+                        }
+                        break;
+                    case "HIBRIDO TOTAL":
+                        try {
+                            Persona pepe = new Persona(nombreCompleto, dni);
+                            Hibrido_total coche = new Hibrido_total(matricula, pepe, marca, modelo, color);
+                            userMatricula.setText(coche.getMatricula());
+                            userModelo.setText(coche.getModelo());
+                            userMarca.setText(coche.getMarca());
+                            userColor.setText(coche.getColor());
+                            userTipoVehiculo.setText(coche.getTipoVehiculo());
+
+                            userNombreCompleto.setText(pepe.getNombreCompleto());
+                            userDni.setText(pepe.getDni());
+
+                        } catch (IncorrectNameException | BadDniException | BadMatriculaException e) {
+                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
+                            pantallaExcept.setVisible(true);
+                            pantallaExcept.setLocationRelativeTo(null);
+                        }
+                        break;
+                    case "HIBRIDO ENCHUFABLE":
+                        try {
+                            Persona pepe = new Persona(nombreCompleto, dni);
+                            Hibrido_enchufable coche = new Hibrido_enchufable(matricula, pepe, marca, modelo, color);
+                            userMatricula.setText(coche.getMatricula());
+                            userModelo.setText(coche.getModelo());
+                            userMarca.setText(coche.getMarca());
+                            userColor.setText(coche.getColor());
+                            userTipoVehiculo.setText(coche.getTipoVehiculo());
+
+                            userNombreCompleto.setText(pepe.getNombreCompleto());
+                            userDni.setText(pepe.getDni());
+
+                        } catch (IncorrectNameException | BadDniException | BadMatriculaException e) {
+                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
+                            pantallaExcept.setVisible(true);
+                            pantallaExcept.setLocationRelativeTo(null);
+                        }
+                        break;
                 }
+                break;
             case "MOTO":
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
@@ -466,7 +522,14 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                     pantallaExcept.setVisible(true);
                     pantallaExcept.setLocationRelativeTo(null);
                 }
+                break;
             case "FURGONETA":
+                SeleccionarLongitudFurgoneta pantallaLongitud = new SeleccionarLongitudFurgoneta(this, this);
+                pantallaLongitud.setLocationRelativeTo(null);
+                pantallaLongitud.setVisible(true);
+                
+                longitud = pantallaLongitud.getLongitud();
+                
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Furgoneta furgoneta = new Furgoneta(longitud, matricula, pepe, marca, modelo, color);
@@ -484,7 +547,8 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                     pantallaExcept.setVisible(true);
                     pantallaExcept.setLocationRelativeTo(null);
                 }
-            
+                break;
+
         }
 
 
@@ -495,11 +559,9 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_userTipoVehiculoActionPerformed
 
     private void DniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DniActionPerformed
-        dni = Dni.getText();
     }//GEN-LAST:event_DniActionPerformed
 
     private void NombreCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCompletoActionPerformed
-        nombreCompleto = NombreCompleto.getText();
     }//GEN-LAST:event_NombreCompletoActionPerformed
 
     private void inicioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioBtnActionPerformed
@@ -511,13 +573,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private void userNombreCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNombreCompletoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userNombreCompletoActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo(this);
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
-        combustibleLabel.setText(tipoCombustible);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void userCombustionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userCombustionActionPerformed
     }//GEN-LAST:event_userCombustionActionPerformed
@@ -553,7 +608,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private javax.swing.JRadioButton checkMoto;
     private javax.swing.JLabel combustibleLabel;
     private javax.swing.JButton inicioBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

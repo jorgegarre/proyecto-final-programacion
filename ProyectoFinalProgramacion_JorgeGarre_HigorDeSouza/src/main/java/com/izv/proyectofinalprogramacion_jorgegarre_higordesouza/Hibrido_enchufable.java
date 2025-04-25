@@ -11,8 +11,12 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
 public class Hibrido_enchufable extends Hibrido {
     protected final boolean enchufable = true;
 
-    public Hibrido_enchufable(int autonomia_real, int autonomia_total, String matricula, Persona dueño, String marca, String modelo, String color) throws BadMatriculaException {
-        super(autonomia_real, autonomia_total, matricula, dueño, marca, modelo, color);
+//    public Hibrido_enchufable(int autonomia_real, int autonomia_total, String matricula, Persona dueño, String marca, String modelo, String color) throws BadMatriculaException {
+//        super(autonomia_real, autonomia_total, matricula, dueño, marca, modelo, color);
+//    }
+
+    public Hibrido_enchufable(String matricula, Persona dueño, String marca, String modelo, String color) throws BadMatriculaException {
+        super(matricula, dueño, marca, modelo, color);
     }
 
  

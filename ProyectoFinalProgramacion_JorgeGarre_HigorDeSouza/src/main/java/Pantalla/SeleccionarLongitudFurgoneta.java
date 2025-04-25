@@ -1,24 +1,25 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Pantalla;
-
-import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.*;
 
 /**
  *
  * @author jorgegarre
  */
-public class SeleccionarLongitudFurgoneta extends javax.swing.JFrame {
+public class SeleccionarLongitudFurgoneta extends javax.swing.JDialog {
 
-    Double longitud;
-    
+    private aparcarVehiculo AparcarVehiculo;
+    int longitud;
+
     /**
      * Creates new form SeleccionarLongitudFurgoneta
      */
-    public SeleccionarLongitudFurgoneta() {
-        initComponents();        
+    public SeleccionarLongitudFurgoneta(java.awt.Frame parent, aparcarVehiculo AparcarVehiculo) {
+        super(parent, true); // esto hace que sea MODAL
+        this.AparcarVehiculo = AparcarVehiculo;
+        initComponents();
     }
 
     /**
@@ -31,13 +32,20 @@ public class SeleccionarLongitudFurgoneta extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        userLongitud = new javax.swing.JTextField();
+        UserLongitud = new javax.swing.JTextField();
         aceptarButton = new javax.swing.JButton();
+        mensajeLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Índica la longitud de tu furgoneta (en cm)");
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setText("Índica la longitud de tu furgoneta en cm");
+
+        UserLongitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserLongitudActionPerformed(evt);
+            }
+        });
 
         aceptarButton.setText("Aceptar");
         aceptarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -46,42 +54,76 @@ public class SeleccionarLongitudFurgoneta extends javax.swing.JFrame {
             }
         });
 
+        mensajeLabel.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(userLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(aceptarButton)
-                        .addGap(170, 170, 170))))
+                        .addGap(167, 167, 167))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(UserLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(mensajeLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1)
-                .addGap(57, 57, 57)
-                .addComponent(userLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addGap(59, 59, 59)
+                .addComponent(UserLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(mensajeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(aceptarButton)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void UserLongitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserLongitudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserLongitudActionPerformed
+
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
-            longitud = Double.parseDouble(userLongitud.getText());      
+        String textoLongitud = UserLongitud.getText();
+
+        if (textoLongitud == null || textoLongitud.trim().isEmpty()) {
+            mensajeLabel.setText("Por favor introduce la longitud de tu vehículo");
+            return;
+        }
+
+        try {
+            int lon = Integer.parseInt(textoLongitud.trim());
+
+            if (lon > 800) {
+                mensajeLabel.setText("Lo siento tu furgoneta excede las longitudes del parking, no puedes aparcar aqui");
+                this.dispose();
+            }
+            
+            longitud = lon;
+            this.dispose();
+        } catch (NumberFormatException e) {
+            mensajeLabel.setText("La longitud debe ser un número válido");
+        }
+
     }//GEN-LAST:event_aceptarButtonActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -109,17 +151,29 @@ public class SeleccionarLongitudFurgoneta extends javax.swing.JFrame {
 //        }
 //        //</editor-fold>
 //
-//        /* Create and display the form */
+//        /* Create and display the dialog */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new SeleccionarLongitudFurgoneta().setVisible(true);
+//                SeleccionarLongitudFurgoneta dialog = new SeleccionarLongitudFurgoneta(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
 //            }
 //        });
 //    }
 
+    public int getLongitud() {
+        return longitud;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField UserLongitud;
     private javax.swing.JButton aceptarButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField userLongitud;
+    private javax.swing.JLabel mensajeLabel;
     // End of variables declaration//GEN-END:variables
 }

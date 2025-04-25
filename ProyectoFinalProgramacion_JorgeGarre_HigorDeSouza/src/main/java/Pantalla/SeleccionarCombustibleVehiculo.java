@@ -15,17 +15,20 @@ import Pantalla.*;
  *
  * @author jorge
  */
-public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
-    private aparcarVehiculo AparcarVehiculo;
+public class SeleccionarCombustibleVehiculo extends javax.swing.JDialog {
 
-     String tipoCombustible;
+    private aparcarVehiculo AparcarVehiculo;
+    String tipoCombustible;
+
     /**
      * Creates new form seleccionarCombustibleVehiculo
      */
-    public SeleccionarCombustibleVehiculo(aparcarVehiculo AparcarVehiculo) {
-       this.AparcarVehiculo = AparcarVehiculo; // <---- ¡Esta línea es esencial!
-       initComponents();
-    }
+    public SeleccionarCombustibleVehiculo(java.awt.Frame parent, aparcarVehiculo AparcarVehiculo) {
+    super(parent, true); // esto hace que sea MODAL
+    this.AparcarVehiculo = AparcarVehiculo;
+    initComponents();
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +47,7 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
         HibridoEnchufableButton = new javax.swing.JRadioButton();
         mensajeLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Selecciona combustible");
@@ -131,28 +134,37 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
-        if (tipoCombustible == null) {
-            mensajeLabel.setText("Por favor introduce el combustible de tu coche");
+        String prueba = "";
+        if (GasolinaButton.isSelected()) {
+            prueba = "GASOLINA";
+            
+        } else if (DieselButton.isSelected()) {
+            prueba = "DIESEL";
+        } else if (HibridoTotalButton.isSelected()) {
+            prueba = "HIBRIDO TOTAL";
+        } else if (HibridoEnchufableButton.isSelected()) {
+            prueba = "HIBRIDO ENCHUFABLE";
         }
-        
-        AparcarVehiculo.setTipoCombustible(tipoCombustible);
-        this.dispose();
+
+        if (prueba == null) {
+            mensajeLabel.setText("Por favor introduce el combustible de tu coche");
+        } else {
+            tipoCombustible = prueba;
+            this.dispose(); // solo cerrar si se ha seleccionado algo
+        }
+
     }//GEN-LAST:event_ButtonActionPerformed
 
     private void GasolinaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GasolinaButtonActionPerformed
-        tipoCombustible = "GASOLINA";
     }//GEN-LAST:event_GasolinaButtonActionPerformed
 
     private void DieselButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DieselButtonActionPerformed
-        tipoCombustible = "DIESEL";
     }//GEN-LAST:event_DieselButtonActionPerformed
 
     private void HibridoTotalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibridoTotalButtonActionPerformed
-        tipoCombustible = "HIBRIDO TOTAL";
     }//GEN-LAST:event_HibridoTotalButtonActionPerformed
 
     private void HibridoEnchufableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibridoEnchufableButtonActionPerformed
-        tipoCombustible = "HIBRIDO ENCHUFABLE";
     }//GEN-LAST:event_HibridoEnchufableButtonActionPerformed
 
     /**
@@ -190,12 +202,11 @@ public class SeleccionarCombustibleVehiculo extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
     public String getTipoCombustible() {
         return tipoCombustible;
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button;
     private javax.swing.ButtonGroup CombustibleButton;

@@ -239,7 +239,7 @@ public class SalirParking extends javax.swing.JDialog {
         try {
             // Conexión a MySQL
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "@Nigga135");
+                    "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
 
             // Consulta SQL
             String sql = "INSERT INTO PARKING_SALIDA (MATRICULA, TIEMPO_PARKING, TARIFA_APLICADA, TOTAL_A_PAGAR) "

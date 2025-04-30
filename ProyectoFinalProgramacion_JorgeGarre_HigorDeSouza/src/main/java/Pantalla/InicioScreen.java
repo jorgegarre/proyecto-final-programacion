@@ -134,6 +134,10 @@ public class InicioScreen extends javax.swing.JFrame {
 
     private void pagarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarBtnActionPerformed
         // TODO add your handling code here:
+        SalirParking sp = new SalirParking(this,true);
+        sp.setVisible(true);
+        sp.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_pagarBtnActionPerformed
 
     private void consultarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBtnActionPerformed

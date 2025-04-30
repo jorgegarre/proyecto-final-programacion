@@ -148,10 +148,13 @@ public class LoginContabilidad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
-        userInserted = user.getText();
     }//GEN-LAST:event_userActionPerformed
 
     private void accederBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederBtnActionPerformed
+        userInserted = user.getText();
+        passwordInserted = new String(password.getPassword());
+
+       
         for (int i = 0; i < 3; i++) {
             if (userInserted.equals(userStringTrue) && (passwordInserted.equals(passwordStringTrue))) {
             
@@ -179,7 +182,6 @@ public class LoginContabilidad extends javax.swing.JFrame {
     }//GEN-LAST:event_salirBtnActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-       passwordInserted = new String(password.getPassword());
     }//GEN-LAST:event_passwordActionPerformed
 
     /**

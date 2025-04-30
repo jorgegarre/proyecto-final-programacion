@@ -422,7 +422,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 tipoCombustible = pantalla.getTipoCombustible();
                 combustibleLabel.setText(tipoCombustible);
 
-                switch (tipoCombustible.toUpperCase()) {
+                switch (tipoCombustible.trim().toUpperCase()) {
                     case "GASOLINA":
                         try {
                             Persona pepe = new Persona(nombreCompleto, dni);
@@ -460,7 +460,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
                             PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
                             pantallaExcept.setVisible(true);
-                            
+
                             pantallaExcept.setLocationRelativeTo(null);
                         }
                         break;
@@ -527,9 +527,9 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 SeleccionarLongitudFurgoneta pantallaLongitud = new SeleccionarLongitudFurgoneta(this, this);
                 pantallaLongitud.setLocationRelativeTo(null);
                 pantallaLongitud.setVisible(true);
-                
+
                 longitud = pantallaLongitud.getLongitud();
-                
+
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Furgoneta furgoneta = new Furgoneta(longitud, matricula, pepe, marca, modelo, color);
@@ -547,6 +547,9 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                     pantallaExcept.setVisible(true);
                     pantallaExcept.setLocationRelativeTo(null);
                 }
+                break;
+            default:
+                System.out.println("Tipo de combustible no reconocido: " + tipoCombustible);
                 break;
 
         }

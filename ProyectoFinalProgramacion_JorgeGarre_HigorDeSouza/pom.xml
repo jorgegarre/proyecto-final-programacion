@@ -18,9 +18,16 @@
 
     <name>ProyectoFinalProgramacion_JorgeGarre_HigorDeSouza</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
-            <!-- Plugin para compilar con Java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -31,7 +38,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin para ejecutar clases Java -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>

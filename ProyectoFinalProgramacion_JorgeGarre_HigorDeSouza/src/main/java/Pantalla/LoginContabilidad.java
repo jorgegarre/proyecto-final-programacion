@@ -88,10 +88,6 @@ public class LoginContabilidad extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +96,7 @@ public class LoginContabilidad extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(accederBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                         .addComponent(salirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(134, 134, 134))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -110,13 +106,17 @@ public class LoginContabilidad extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(user, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,23 +152,22 @@ public class LoginContabilidad extends javax.swing.JFrame {
     }//GEN-LAST:event_userActionPerformed
 
     private void accederBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederBtnActionPerformed
-        for (int i = 0; i < 3; i++) {
-            if (userInserted.equals(userStringTrue) && (passwordInserted.equals(passwordStringTrue))) {
-            
-            userTrue = true;
-            passwordTrue = true;
-                
-            Contabilidad panta = new Contabilidad();
-            panta.setVisible(true);
-            panta.setLocationRelativeTo(null);
-            this.dispose();
-            i = 3;
-            } else {
-            incorrectLogin.setText("Credenciales incorrectas");
-            user.setText("");
-            password.setText("");
-            }
-        }
+        userInserted = user.getText();
+    passwordInserted = new String(password.getPassword());
+
+    if (userInserted.equals(userStringTrue) && passwordInserted.equals(passwordStringTrue)) {
+        userTrue = true;
+        passwordTrue = true;
+
+        Contabilidad panta = new Contabilidad();
+        panta.setVisible(true);
+        panta.setLocationRelativeTo(null);
+        this.dispose();
+    } else {
+        incorrectLogin.setText("Credenciales incorrectas");
+        user.setText("");
+        password.setText("");
+    }
             
         
     }//GEN-LAST:event_accederBtnActionPerformed

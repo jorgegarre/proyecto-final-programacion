@@ -5,6 +5,10 @@
 package Pantalla;
 
 import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -425,8 +429,11 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 switch (tipoCombustible.trim().toUpperCase()) {
                     case "GASOLINA":
                         try {
+                            // Crear objetos
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
+
+                            // Mostrar en interfaz
                             userMatricula.setText(coche.getMatricula());
                             userModelo.setText(coche.getModelo());
                             userMarca.setText(coche.getMarca());
@@ -437,11 +444,35 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
 
+                            // Guardar en la base de datos
+                            Connection con = DriverManager.getConnection(
+                                    "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
+
+                            String sql = "INSERT INTO VEHICULOS_REGISTRADOS (MATRICULA, COMBUSTIBLE, MARCA, MODELO, COLOR, NOMBRE_COMPLETO, DNI) "
+                                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+                            PreparedStatement ps = con.prepareStatement(sql);
+                            ps.setString(1, coche.getMatricula());
+                            ps.setString(2, coche.getCombustible());
+                            ps.setString(3, coche.getMarca());
+                            ps.setString(4, coche.getModelo());
+                            ps.setString(5, coche.getColor());
+                            ps.setString(6, pepe.getNombreCompleto());
+                            ps.setString(7, pepe.getDni());
+
+                            ps.executeUpdate();
+                            con.close();
+
+                            System.out.println("Vehículo registrado en la base de datos correctamente.");
+
                         } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
                             PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
                             pantallaExcept.setVisible(true);
                             pantallaExcept.setLocationRelativeTo(null);
+                        } catch (SQLException e) {
+                            e.printStackTrace(); // Mostrar errores de conexión o SQL
                         }
+
                         break;
                     case "DIESEL":
                         try {

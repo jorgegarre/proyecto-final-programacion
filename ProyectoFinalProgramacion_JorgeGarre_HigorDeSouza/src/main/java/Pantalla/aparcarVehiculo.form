@@ -67,40 +67,23 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="userMarca" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="userModelo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="userColor" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="userTipoVehiculo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="Boton" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="userMatricula" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="Boton" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="NombreCompleto" pref="119" max="32767" attributes="0"/>
-                                                      <Component id="jLabel8" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="Dni" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="userNombreCompleto" alignment="0" pref="0" max="32767" attributes="0"/>
-                                                      <Component id="userDni" alignment="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                                  <Component id="userCombustion" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="NombreCompleto" pref="119" max="32767" attributes="0"/>
+                                              <Component id="jLabel8" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="Dni" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="userNombreCompleto" alignment="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="userDni" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="inicioBtn" min="-2" max="-2" attributes="0"/>
-                                              <Component id="combustibleLabel" min="-2" pref="154" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="inicioBtn" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -113,9 +96,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -136,7 +119,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Matricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="NombreCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -147,7 +129,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Marca" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Dni" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -155,7 +136,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Modelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userModelo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="userNombreCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -163,15 +143,9 @@
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Color" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userColor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="userDni" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="userTipoVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userCombustion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -188,17 +162,9 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="checkFurgoneta" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="combustibleLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="75" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <Component id="checkFurgoneta" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="86" max="32767" attributes="0"/>
                   <Component id="showTipoVehiculo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
@@ -292,52 +258,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkFurgonetaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="userMatricula">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userMatriculaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="userMarca">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Marca"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userMarcaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="userModelo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Modelo"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userModeloActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="userColor">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Color"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userColorActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="Boton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Vehiculo"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="userTipoVehiculo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tipo Vehiculo"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userTipoVehiculoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -380,19 +306,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inicioBtnActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="userCombustion">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Combustion"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userCombustionActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="combustibleLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Combustible"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="showTipoVehiculo">
         </Component>

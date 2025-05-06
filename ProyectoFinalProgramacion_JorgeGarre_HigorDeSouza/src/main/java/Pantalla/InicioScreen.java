@@ -133,14 +133,19 @@ public class InicioScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_aparcarBtnActionPerformed
 
     private void pagarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarBtnActionPerformed
-        SalirParking pantalla = new SalirParking();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+        // TODO add your handling code here:
+        SalirParking sp = new SalirParking(this,true);
+        sp.setLocationRelativeTo(null);
+        sp.setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_pagarBtnActionPerformed
 
     private void consultarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBtnActionPerformed
-        // TODO add your handling code here:
+        ConsultarPlazas pantalla = new ConsultarPlazas();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_consultarBtnActionPerformed
 
     private void contabilidadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contabilidadBtnActionPerformed

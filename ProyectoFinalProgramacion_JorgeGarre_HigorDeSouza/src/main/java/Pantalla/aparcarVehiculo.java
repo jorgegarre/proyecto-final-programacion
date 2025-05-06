@@ -57,12 +57,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         checkMoto = new javax.swing.JRadioButton();
         checkFurgoneta = new javax.swing.JRadioButton();
-        userMatricula = new javax.swing.JTextField();
-        userMarca = new javax.swing.JTextField();
-        userModelo = new javax.swing.JTextField();
-        userColor = new javax.swing.JTextField();
         Boton = new javax.swing.JButton();
-        userTipoVehiculo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         NombreCompleto = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -70,8 +65,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         userNombreCompleto = new javax.swing.JTextField();
         userDni = new javax.swing.JTextField();
         inicioBtn = new javax.swing.JButton();
-        userCombustion = new javax.swing.JTextField();
-        combustibleLabel = new javax.swing.JLabel();
         showTipoVehiculo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -137,45 +130,10 @@ public class aparcarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        userMatricula.setText("Matrícula");
-        userMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userMatriculaActionPerformed(evt);
-            }
-        });
-
-        userMarca.setText("Marca");
-        userMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userMarcaActionPerformed(evt);
-            }
-        });
-
-        userModelo.setText("Modelo");
-        userModelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userModeloActionPerformed(evt);
-            }
-        });
-
-        userColor.setText("Color");
-        userColor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userColorActionPerformed(evt);
-            }
-        });
-
         Boton.setText("Crear Vehiculo");
         Boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonActionPerformed(evt);
-            }
-        });
-
-        userTipoVehiculo.setText("Tipo Vehiculo");
-        userTipoVehiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userTipoVehiculoActionPerformed(evt);
             }
         });
 
@@ -211,15 +169,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        userCombustion.setText("Combustion");
-        userCombustion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userCombustionActionPerformed(evt);
-            }
-        });
-
-        combustibleLabel.setText("Combustible");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -244,40 +193,28 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(userMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userModelo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userColor, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userTipoVehiculo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Boton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(userMatricula))
+                                .addComponent(Boton)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(NombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(Dni)
-                                                    .addComponent(userNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                                    .addComponent(userDni)))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(46, 46, 46)
-                                                .addComponent(userCombustion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(NombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Dni)
+                                            .addComponent(userNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                            .addComponent(userDni))
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(inicioBtn)
-                                            .addComponent(combustibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(inicioBtn)
+                                        .addGap(102, 102, 102))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(138, 138, 138)
-                        .addComponent(jLabel6)))
-                .addGap(55, 55, 55))
+                        .addComponent(jLabel6)
+                        .addGap(55, 55, 55))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(showTipoVehiculo)
@@ -294,7 +231,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -303,27 +239,20 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userCombustion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -336,14 +265,9 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Boton)
                             .addComponent(inicioBtn))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(checkFurgoneta))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(combustibleLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(checkFurgoneta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(showTipoVehiculo)
                 .addGap(48, 48, 48))
         );
@@ -390,22 +314,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         tipoVehiculo = "FURGONETA";
     }//GEN-LAST:event_checkFurgonetaActionPerformed
 
-    private void userMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userMatriculaActionPerformed
-
-    private void userMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMarcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userMarcaActionPerformed
-
-    private void userModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userModeloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userModeloActionPerformed
-
-    private void userColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userColorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userColorActionPerformed
-
     private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
 
         matricula = Matricula.getText();
@@ -424,23 +332,18 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 pantalla.setVisible(true);
 
                 tipoCombustible = pantalla.getTipoCombustible();
-                combustibleLabel.setText(tipoCombustible);
+                
 
                 switch (tipoCombustible.trim().toUpperCase()) {
                     case "GASOLINA":
+                        
+                        
                         try {
                             // Crear objetos
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
 
-                            // Mostrar en interfaz
-                            userMatricula.setText(coche.getMatricula());
-                            userModelo.setText(coche.getModelo());
-                            userMarca.setText(coche.getMarca());
-                            userColor.setText(coche.getColor());
-                            userTipoVehiculo.setText(coche.getTipoVehiculo());
-                            userCombustion.setText(coche.getCombustible());
-
+                           
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
 
@@ -478,12 +381,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         try {
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
-                            userMatricula.setText(coche.getMatricula());
-                            userModelo.setText(coche.getModelo());
-                            userMarca.setText(coche.getMarca());
-                            userColor.setText(coche.getColor());
-                            userTipoVehiculo.setText(coche.getTipoVehiculo());
-                            userCombustion.setText(coche.getCombustible());
+                            
 
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
@@ -499,11 +397,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         try {
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Hibrido_total coche = new Hibrido_total(matricula, pepe, marca, modelo, color);
-                            userMatricula.setText(coche.getMatricula());
-                            userModelo.setText(coche.getModelo());
-                            userMarca.setText(coche.getMarca());
-                            userColor.setText(coche.getColor());
-                            userTipoVehiculo.setText(coche.getTipoVehiculo());
+                            
 
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
@@ -518,11 +412,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         try {
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Hibrido_enchufable coche = new Hibrido_enchufable(matricula, pepe, marca, modelo, color);
-                            userMatricula.setText(coche.getMatricula());
-                            userModelo.setText(coche.getModelo());
-                            userMarca.setText(coche.getMarca());
-                            userColor.setText(coche.getColor());
-                            userTipoVehiculo.setText(coche.getTipoVehiculo());
+                            
 
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
@@ -539,11 +429,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Moto moto = new Moto(matricula, pepe, marca, modelo, color);
-                    userMatricula.setText(moto.getMatricula());
-                    userModelo.setText(moto.getModelo());
-                    userMarca.setText(moto.getMarca());
-                    userColor.setText(moto.getColor());
-                    userTipoVehiculo.setText(moto.getTipoVehiculo());
+                    
 
                     userNombreCompleto.setText(pepe.getNombreCompleto());
                     userDni.setText(pepe.getDni());
@@ -564,11 +450,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Furgoneta furgoneta = new Furgoneta(longitud, matricula, pepe, marca, modelo, color);
-                    userMatricula.setText(furgoneta.getMatricula());
-                    userModelo.setText(furgoneta.getModelo());
-                    userMarca.setText(furgoneta.getMarca());
-                    userColor.setText(furgoneta.getColor());
-                    userTipoVehiculo.setText(furgoneta.getTipoVehiculo());
+                    
 
                     userNombreCompleto.setText(pepe.getNombreCompleto());
                     userDni.setText(pepe.getDni());
@@ -588,10 +470,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BotonActionPerformed
 
-    private void userTipoVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTipoVehiculoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userTipoVehiculoActionPerformed
-
     private void DniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DniActionPerformed
     }//GEN-LAST:event_DniActionPerformed
 
@@ -607,9 +485,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private void userNombreCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNombreCompletoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userNombreCompletoActionPerformed
-
-    private void userCombustionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userCombustionActionPerformed
-    }//GEN-LAST:event_userCombustionActionPerformed
 
     public void setTipoCombustible(String tipoCombustible) {
         this.tipoCombustible = tipoCombustible;
@@ -640,7 +515,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private javax.swing.JRadioButton checkCoche;
     private javax.swing.JRadioButton checkFurgoneta;
     private javax.swing.JRadioButton checkMoto;
-    private javax.swing.JLabel combustibleLabel;
     private javax.swing.JButton inicioBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -652,13 +526,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel showTipoVehiculo;
-    private javax.swing.JTextField userColor;
-    private javax.swing.JTextField userCombustion;
     private javax.swing.JTextField userDni;
-    private javax.swing.JTextField userMarca;
-    private javax.swing.JTextField userMatricula;
-    private javax.swing.JTextField userModelo;
     private javax.swing.JTextField userNombreCompleto;
-    private javax.swing.JTextField userTipoVehiculo;
     // End of variables declaration//GEN-END:variables
 }

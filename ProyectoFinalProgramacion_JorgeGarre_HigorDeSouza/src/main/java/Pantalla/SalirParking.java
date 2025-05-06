@@ -7,6 +7,7 @@ package Pantalla;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +25,6 @@ public class SalirParking extends javax.swing.JDialog {
         txtpTarifa.setEditable(false);
         txtpTotal.setEditable(false);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -247,20 +247,33 @@ public class SalirParking extends javax.swing.JDialog {
             // Conexión a MySQL
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
+            String checkSQL = "SELECT COUNT(*) FROM APARCAR WHERE MATRICULA = ?";
+            PreparedStatement checkStmt = con.prepareStatement(checkSQL);
+            checkStmt.setString(1, matricula);
+            ResultSet rs = checkStmt.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
 
-            // Consulta SQL
-            String sql = "INSERT INTO PARKING_SALIDA (MATRICULA, TIEMPO_PARKING, TARIFA_APLICADA, TOTAL_A_PAGAR) "
-                    + "VALUES (?, ?, ?, ?)";
+            if (count == 0) {
+                JOptionPane.showMessageDialog(this, "Esa matrícula no está actualmente en el parking.");
+            } else {
+                // Insertar en PARKING_SALIDA
+                String sql = "INSERT INTO PARKING_SALIDA (MATRICULA, TIEMPO_PARKING, TARIFA_APLICADA, TOTAL_A_PAGAR) "
+                        + "VALUES (?, ?, ?, ?)";
 
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, matricula);
-            ps.setInt(2, minParking);
-            ps.setDouble(3, tarifa);
-            ps.setDouble(4, totalPagar);
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, matricula);
+                ps.setInt(2, minParking);
+                ps.setDouble(3, tarifa);
+                ps.setDouble(4, totalPagar);
 
-            ps.executeUpdate();
+                ps.executeUpdate();
 
-            System.out.println("Registro insertado correctamente.");
+                JOptionPane.showMessageDialog(this, "Salida registrada. Total a pagar: " + totalPagar + " €");
+            }
+
+            rs.close();
+            checkStmt.close();
             con.close();
 
         } catch (Exception e) {

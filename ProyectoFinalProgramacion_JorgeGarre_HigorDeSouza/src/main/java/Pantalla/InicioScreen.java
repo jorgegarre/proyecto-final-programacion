@@ -143,6 +143,10 @@ public class InicioScreen extends javax.swing.JFrame {
 
     private void consultarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBtnActionPerformed
         // TODO add your handling code here:
+        ConsultarPlazas cp = new ConsultarPlazas();
+        cp.setLocationRelativeTo(null);
+        cp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_consultarBtnActionPerformed
 
     private void contabilidadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contabilidadBtnActionPerformed

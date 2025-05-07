@@ -129,6 +129,7 @@ public class InicioScreen extends javax.swing.JFrame {
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
         this.dispose();
+        // f
         
     }//GEN-LAST:event_aparcarBtnActionPerformed
 

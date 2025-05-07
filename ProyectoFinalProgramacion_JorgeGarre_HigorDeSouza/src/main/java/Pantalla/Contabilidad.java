@@ -16,6 +16,17 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase; // Para usar en las celdas de la tabla
+import com.lowagie.text.Chunk; // Para añadir líneas en blanco (Chunk.NEWLINE)
+import com.lowagie.text.Element; // Para la alineación (Element.ALIGN_CENTER)
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.PdfPTable; // Para crear la tabla
+import com.lowagie.text.pdf.PdfPCell; // Para las celdas de la tabla
+import java.io.FileOutputStream;
 
 /**
  *
@@ -48,6 +59,7 @@ public class Contabilidad extends javax.swing.JFrame {
         btnExportar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtTotalFacturacion = new javax.swing.JTextField();
+        btnInformePDF = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +97,13 @@ public class Contabilidad extends javax.swing.JFrame {
 
         jLabel2.setText("TOTAL FACTURACIÓN:");
 
+        btnInformePDF.setText("Exportar Informe (PDF)");
+        btnInformePDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformePDFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -103,17 +122,16 @@ public class Contabilidad extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(inicioBtn)
-                                .addGap(32, 32, 32))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(24, Short.MAX_VALUE))))))
+                            .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnInformePDF)
+                            .addComponent(btnInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(42, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(inicioBtn)
+                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,10 +140,12 @@ public class Contabilidad extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
+                        .addGap(99, 99, 99)
                         .addComponent(btnInforme)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnExportar))
+                        .addGap(34, 34, 34)
+                        .addComponent(btnExportar)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnInformePDF))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -133,9 +153,9 @@ public class Contabilidad extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtTotalFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inicioBtn)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,7 +186,7 @@ public class Contabilidad extends javax.swing.JFrame {
         String fechaActual = sdf.format(new Date());
 
         // Nombre del archivo con la fecha
-        String nombreArchivo = "SalidasParking-" + fechaActual + ".txt";
+        String nombreArchivo = "INFORMES/SalidasParking-" + fechaActual + ".txt";
 
         // Obtener el contenido del JTextArea (txtInforme)
         String contenidoInforme = txtInforme.getText();
@@ -240,6 +260,112 @@ public class Contabilidad extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnInformeActionPerformed
 
+    private void btnInformePDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformePDFActionPerformed
+        // TODO add your handling code here:
+        // Código existente para obtener la fecha y el nombre del archivo
+SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+    String fechaActual = sdf.format(new Date());
+
+    String nombreArchivo = "INFORMES/SalidasParking-" + fechaActual + ".pdf";
+
+    String contenidoInformeCheck = txtInforme.getText();
+    if (contenidoInformeCheck.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "⚠️ No hay ningún informe para exportar.");
+        return;
+    }
+
+    try {
+        Document document = new Document();
+        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
+        document.open();
+
+        Font titleFont = new Font(Font.TIMES_ROMAN, 18, Font.BOLD);
+        Paragraph title = new Paragraph("Informe de Salidas de Parking", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+
+        PdfPTable table = new PdfPTable(5);
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+
+        float[] columnWidths = {1f, 2f, 2f, 2f, 3f};
+        table.setWidths(columnWidths);
+
+        Font headerFont = new Font(Font.TIMES_ROMAN, 11, Font.BOLD);
+        PdfPCell cell;
+
+        cell = new PdfPCell(new Phrase("ID", headerFont));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Tiempo (min)", headerFont));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Tarifa (€)", headerFont));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Total (€)", headerFont));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Fecha de salida", headerFont));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        try ( Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
+              Statement stmt = conn.createStatement();
+              ResultSet rs = stmt.executeQuery("SELECT * FROM PARKING_SALIDA ORDER BY fecha_salida")) {
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                int tiempo_parking = rs.getInt("Tiempo_Parking");
+                double tarifa_aplicada = rs.getDouble("Tarifa_aplicada");
+                double total_a_pagar = rs.getDouble("total_a_pagar");
+                String fecha_salida = rs.getString("fecha_salida");
+
+                // Crear celdas para los datos y centrarlas
+                PdfPCell dataCell;
+
+                dataCell = new PdfPCell(new Phrase(String.valueOf(id)));
+                dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(dataCell);
+
+                dataCell = new PdfPCell(new Phrase(String.valueOf(tiempo_parking)));
+                dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(dataCell);
+
+                dataCell = new PdfPCell(new Phrase(String.format("%.2f", tarifa_aplicada)));
+                dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(dataCell);
+
+                dataCell = new PdfPCell(new Phrase(String.format("%.2f", total_a_pagar)));
+                dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(dataCell);
+
+                dataCell = new PdfPCell(new Phrase(fecha_salida));
+                dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(dataCell);
+            }
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+
+        document.add(table);
+
+        document.close();
+        writer.close();
+
+        JOptionPane.showMessageDialog(null, "✅ Informe exportado correctamente a " + nombreArchivo);
+
+    } catch (DocumentException | IOException e) {
+        JOptionPane.showMessageDialog(null, "❌ Error al exportar el informe a PDF.");
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_btnInformePDFActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,6 +380,7 @@ public class Contabilidad extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnInforme;
+    private javax.swing.JButton btnInformePDF;
     private javax.swing.JButton inicioBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

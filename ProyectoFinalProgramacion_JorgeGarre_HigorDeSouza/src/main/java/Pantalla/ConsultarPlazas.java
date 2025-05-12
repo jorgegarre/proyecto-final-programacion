@@ -20,14 +20,57 @@ import javax.swing.JOptionPane;
  * @author higor
  */
 public class ConsultarPlazas extends javax.swing.JFrame {
+    
+       public ConsultarPlazas() {
+        initComponents();
+        cargarPlazas(); // Se ejecuta automáticamente al abrir la ventana
+    }
+private void cargarPlazas() {
+    Map<Integer, JButton> botonesPlazas = new HashMap<>();
+    botonesPlazas.put(1, Parkingbtn1);
+    botonesPlazas.put(2, Parkingbtn2);
+    botonesPlazas.put(3, Parkingbtn3);
+    botonesPlazas.put(4, Parkingbtn4);
+    botonesPlazas.put(5, Parkingbtn5);
+    botonesPlazas.put(6, Parkingbtn6);
+    botonesPlazas.put(7, Parkingbtn7);
+    botonesPlazas.put(8, Parkingbtn8);
+    botonesPlazas.put(9, Parkingbtn9);
+    botonesPlazas.put(10, Parkingbtn10);
+
+    // Todas verdes (libres)
+    for (JButton boton : botonesPlazas.values()) {
+        boton.setBackground(Color.GREEN);
+        boton.setOpaque(true);
+    }
+
+    // Marcar ocupadas en rojo
+    try (Connection conn = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
+         PreparedStatement stmt = conn.prepareStatement("SELECT N_PLAZA FROM APARCAMIENTO WHERE LIBRE = FALSE");
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            int plaza = rs.getInt("N_PLAZA");
+            JButton boton = botonesPlazas.get(plaza);
+            if (boton != null) {
+                boton.setBackground(Color.RED);
+            }
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 private Map<Integer, JButton> botonesPlazas = new HashMap<>();
     /**
      * Creates new form ConsultarPlazas
      */
-    public ConsultarPlazas() {
-    initComponents();
-    }
-
+ 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,155 +80,147 @@ private Map<Integer, JButton> botonesPlazas = new HashMap<>();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn1 = new javax.swing.JButton();
-        btn2 = new javax.swing.JButton();
-        btn3 = new javax.swing.JButton();
-        btn4 = new javax.swing.JButton();
-        btn5 = new javax.swing.JButton();
-        btn6 = new javax.swing.JButton();
-        btn7 = new javax.swing.JButton();
-        btn8 = new javax.swing.JButton();
-        btn9 = new javax.swing.JButton();
-        btn10 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Parkingbtn1 = new javax.swing.JButton();
+        Parkingbtn2 = new javax.swing.JButton();
+        Parkingbtn3 = new javax.swing.JButton();
+        Parkingbtn4 = new javax.swing.JButton();
+        Parkingbtn5 = new javax.swing.JButton();
+        Parkingbtn6 = new javax.swing.JButton();
+        Parkingbtn7 = new javax.swing.JButton();
+        Parkingbtn8 = new javax.swing.JButton();
+        Parkingbtn9 = new javax.swing.JButton();
+        Parkingbtn10 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jButton29 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
-        jButton31 = new javax.swing.JButton();
+        Parkingbtn11 = new javax.swing.JButton();
+        Parkingbtn12 = new javax.swing.JButton();
+        Parkingbtn13 = new javax.swing.JButton();
+        Parkingbtn14 = new javax.swing.JButton();
+        Parkingbtn15 = new javax.swing.JButton();
+        Parkingbtn16 = new javax.swing.JButton();
+        Parkingbtn20 = new javax.swing.JButton();
+        Parkingbtn19 = new javax.swing.JButton();
+        Parkingbtn17 = new javax.swing.JButton();
+        Parkingbtn18 = new javax.swing.JButton();
+        Parkingbtn21 = new javax.swing.JButton();
+        Parkingbtn22 = new javax.swing.JButton();
+        Parkingbtn23 = new javax.swing.JButton();
+        Parkingbtn24 = new javax.swing.JButton();
+        Parkingbtn25 = new javax.swing.JButton();
+        Parkingbtn26 = new javax.swing.JButton();
+        Parkingbtn27 = new javax.swing.JButton();
+        Parkingbtn30 = new javax.swing.JButton();
+        Parkingbtn31 = new javax.swing.JButton();
+        Parkingbtn32 = new javax.swing.JButton();
+        Parkingbtn33 = new javax.swing.JButton();
+        Parkingbtn34 = new javax.swing.JButton();
+        Parkingbtn29 = new javax.swing.JButton();
+        Parkingbtn28 = new javax.swing.JButton();
+        Parkingbtn35 = new javax.swing.JButton();
+        Parkingbtn36 = new javax.swing.JButton();
+        Parkingbtn37 = new javax.swing.JButton();
+        Parkingbtn38 = new javax.swing.JButton();
+        Parkingbtn39 = new javax.swing.JButton();
+        Parkingbtn40 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton32 = new javax.swing.JButton();
+        Salirbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn1.setText("1");
-        btn1.addActionListener(new java.awt.event.ActionListener() {
+        Parkingbtn1.setText("1");
+        Parkingbtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1ActionPerformed(evt);
+                Parkingbtn1ActionPerformed(evt);
             }
         });
 
-        btn2.setText("2");
+        Parkingbtn2.setText("2");
 
-        btn3.setText("3");
+        Parkingbtn3.setText("3");
 
-        btn4.setText("4");
+        Parkingbtn4.setText("4");
 
-        btn5.setText("5");
+        Parkingbtn5.setText("5");
 
-        btn6.setText("6");
+        Parkingbtn6.setText("6");
 
-        btn7.setText("7");
+        Parkingbtn7.setText("7");
 
-        btn8.setText("8");
+        Parkingbtn8.setText("8");
 
-        btn9.setText("9");
+        Parkingbtn9.setText("9");
 
-        btn10.setText("10");
-
-        jButton1.setText("Consultar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        Parkingbtn10.setText("10");
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PLAZAS DEL PARKING");
 
-        jButton2.setText("11");
+        Parkingbtn11.setText("11");
 
-        jButton3.setText("12");
+        Parkingbtn12.setText("12");
 
-        jButton4.setText("13");
+        Parkingbtn13.setText("13");
 
-        jButton5.setText("14");
+        Parkingbtn14.setText("14");
 
-        jButton6.setText("15");
+        Parkingbtn15.setText("15");
 
-        jButton7.setText("16");
+        Parkingbtn16.setText("16");
 
-        jButton8.setText("20");
+        Parkingbtn20.setText("20");
 
-        jButton9.setText("19");
+        Parkingbtn19.setText("19");
 
-        jButton10.setText("17");
+        Parkingbtn17.setText("17");
 
-        jButton11.setText("18");
+        Parkingbtn18.setText("18");
 
-        jButton12.setText("21");
+        Parkingbtn21.setText("21");
 
-        jButton13.setText("22");
+        Parkingbtn22.setText("22");
 
-        jButton14.setText("23");
+        Parkingbtn23.setText("23");
 
-        jButton15.setText("24");
+        Parkingbtn24.setText("24");
 
-        jButton16.setText("25");
+        Parkingbtn25.setText("25");
 
-        jButton17.setText("26");
+        Parkingbtn26.setText("26");
 
-        jButton18.setText("27");
+        Parkingbtn27.setText("27");
 
-        jButton19.setText("30");
+        Parkingbtn30.setText("30");
 
-        jButton20.setText("31");
+        Parkingbtn31.setText("31");
 
-        jButton21.setText("32");
+        Parkingbtn32.setText("32");
 
-        jButton22.setText("33");
+        Parkingbtn33.setText("33");
 
-        jButton23.setText("34");
+        Parkingbtn34.setText("34");
 
-        jButton25.setText("29");
+        Parkingbtn29.setText("29");
 
-        jButton24.setText("28");
+        Parkingbtn28.setText("28");
 
-        jButton26.setText("35");
+        Parkingbtn35.setText("35");
 
-        jButton27.setText("36");
-        jButton27.addActionListener(new java.awt.event.ActionListener() {
+        Parkingbtn36.setText("36");
+        Parkingbtn36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27ActionPerformed(evt);
+                Parkingbtn36ActionPerformed(evt);
             }
         });
 
-        jButton28.setText("37");
+        Parkingbtn37.setText("37");
 
-        jButton29.setText("38");
+        Parkingbtn38.setText("38");
 
-        jButton30.setText("39");
+        Parkingbtn39.setText("39");
 
-        jButton31.setText("40");
+        Parkingbtn40.setText("40");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("PLAZAS DE COCHE");
@@ -196,10 +231,10 @@ private Map<Integer, JButton> botonesPlazas = new HashMap<>();
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("PLAZAS DE FURGONETA");
 
-        jButton32.setText("Volver al inicio");
-        jButton32.addActionListener(new java.awt.event.ActionListener() {
+        Salirbtn.setText("Volver al inicio");
+        Salirbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton32ActionPerformed(evt);
+                SalirbtnActionPerformed(evt);
             }
         });
 
@@ -214,63 +249,61 @@ private Map<Integer, JButton> botonesPlazas = new HashMap<>();
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Parkingbtn32, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton1)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Parkingbtn28, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(Parkingbtn29, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Parkingbtn21, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(42, 42, 42)
+                                                .addComponent(Parkingbtn22, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
+                                                .addGap(42, 42, 42)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel3)
-                                                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(Parkingbtn30, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(Parkingbtn31, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(Parkingbtn23, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jLabel3)
+                                                            .addComponent(Parkingbtn24, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGap(27, 27, 27)
+                                                .addComponent(Parkingbtn25, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(160, 160, 160)
+                                                .addComponent(Salirbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(4, 4, 4)))
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(47, 47, 47)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
-                                .addComponent(jButton32)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(Parkingbtn26, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Parkingbtn33, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Parkingbtn34, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Parkingbtn27, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Parkingbtn35, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Parkingbtn36, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Parkingbtn37, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94)
-                        .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Parkingbtn38, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Parkingbtn39, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Parkingbtn40, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,48 +311,48 @@ private Map<Integer, JButton> botonesPlazas = new HashMap<>();
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn13, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn14, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn16, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Parkingbtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Parkingbtn17, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Parkingbtn6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Parkingbtn18, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Parkingbtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Parkingbtn19, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btn10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Parkingbtn20, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(Parkingbtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(374, 374, 374)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,114 +370,81 @@ private Map<Integer, JButton> botonesPlazas = new HashMap<>();
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Parkingbtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Parkingbtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Parkingbtn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Parkingbtn20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Parkingbtn17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Parkingbtn18, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14)
-                    .addComponent(jButton15)
-                    .addComponent(jButton16)
-                    .addComponent(jButton17)
-                    .addComponent(jButton18))
+                    .addComponent(Parkingbtn21)
+                    .addComponent(Parkingbtn22)
+                    .addComponent(Parkingbtn23)
+                    .addComponent(Parkingbtn24)
+                    .addComponent(Parkingbtn25)
+                    .addComponent(Parkingbtn26)
+                    .addComponent(Parkingbtn27))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton24)
-                    .addComponent(jButton25)
-                    .addComponent(jButton19)
-                    .addComponent(jButton20)
-                    .addComponent(jButton21)
-                    .addComponent(jButton22)
-                    .addComponent(jButton23))
+                    .addComponent(Parkingbtn28)
+                    .addComponent(Parkingbtn29)
+                    .addComponent(Parkingbtn30)
+                    .addComponent(Parkingbtn31)
+                    .addComponent(Parkingbtn32)
+                    .addComponent(Parkingbtn33)
+                    .addComponent(Parkingbtn34))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(108, 108, 108)
-                        .addComponent(jButton1)
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton32)
-                        .addGap(32, 32, 32))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Parkingbtn35, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Parkingbtn36, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Parkingbtn37, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Parkingbtn38, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Parkingbtn39, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Parkingbtn40, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addComponent(Salirbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Parkingbtn36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn36ActionPerformed
         // TODO add your handling code here:
-        Map<Integer, JButton> botonesPlazas = new HashMap<>();
-botonesPlazas.put(1, btn1);
-botonesPlazas.put(2, btn2);
-botonesPlazas.put(3, btn3);
-botonesPlazas.put(4, btn4);
-botonesPlazas.put(5, btn5);
-botonesPlazas.put(6, btn6);
-botonesPlazas.put(7, btn7);
-botonesPlazas.put(8, btn8);
-botonesPlazas.put(9, btn9);
-botonesPlazas.put(10, btn10);
+    }//GEN-LAST:event_Parkingbtn36ActionPerformed
 
-// Poner todos en verde (libres)
-for (JButton boton : botonesPlazas.values()) {
-    boton.setBackground(Color.GREEN);
-    boton.setOpaque(true);
-}
-     try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
-         PreparedStatement stmt = conn.prepareStatement("SELECT N_PLAZA FROM APARCAR");
-         ResultSet rs = stmt.executeQuery()) {
-
-        while (rs.next()) {
-            int plaza = rs.getInt("N_PLAZA");
-            JButton boton = botonesPlazas.get(plaza);
-            if (boton != null) {
-                boton.setBackground(Color.RED); // Ocupada
-            }
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+    private void Parkingbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
+    }//GEN-LAST:event_Parkingbtn1ActionPerformed
+
+    private void SalirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirbtnActionPerformed
+    InicioScreen pantalla = new InicioScreen();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        this.dispose();    }//GEN-LAST:event_SalirbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,48 +482,47 @@ for (JButton boton : botonesPlazas.values()) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn1;
-    private javax.swing.JButton btn10;
-    private javax.swing.JButton btn2;
-    private javax.swing.JButton btn3;
-    private javax.swing.JButton btn4;
-    private javax.swing.JButton btn5;
-    private javax.swing.JButton btn6;
-    private javax.swing.JButton btn7;
-    private javax.swing.JButton btn8;
-    private javax.swing.JButton btn9;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton Parkingbtn1;
+    private javax.swing.JButton Parkingbtn10;
+    private javax.swing.JButton Parkingbtn11;
+    private javax.swing.JButton Parkingbtn12;
+    private javax.swing.JButton Parkingbtn13;
+    private javax.swing.JButton Parkingbtn14;
+    private javax.swing.JButton Parkingbtn15;
+    private javax.swing.JButton Parkingbtn16;
+    private javax.swing.JButton Parkingbtn17;
+    private javax.swing.JButton Parkingbtn18;
+    private javax.swing.JButton Parkingbtn19;
+    private javax.swing.JButton Parkingbtn2;
+    private javax.swing.JButton Parkingbtn20;
+    private javax.swing.JButton Parkingbtn21;
+    private javax.swing.JButton Parkingbtn22;
+    private javax.swing.JButton Parkingbtn23;
+    private javax.swing.JButton Parkingbtn24;
+    private javax.swing.JButton Parkingbtn25;
+    private javax.swing.JButton Parkingbtn26;
+    private javax.swing.JButton Parkingbtn27;
+    private javax.swing.JButton Parkingbtn28;
+    private javax.swing.JButton Parkingbtn29;
+    private javax.swing.JButton Parkingbtn3;
+    private javax.swing.JButton Parkingbtn30;
+    private javax.swing.JButton Parkingbtn31;
+    private javax.swing.JButton Parkingbtn32;
+    private javax.swing.JButton Parkingbtn33;
+    private javax.swing.JButton Parkingbtn34;
+    private javax.swing.JButton Parkingbtn35;
+    private javax.swing.JButton Parkingbtn36;
+    private javax.swing.JButton Parkingbtn37;
+    private javax.swing.JButton Parkingbtn38;
+    private javax.swing.JButton Parkingbtn39;
+    private javax.swing.JButton Parkingbtn4;
+    private javax.swing.JButton Parkingbtn40;
+    private javax.swing.JButton Parkingbtn5;
+    private javax.swing.JButton Parkingbtn6;
+    private javax.swing.JButton Parkingbtn7;
+    private javax.swing.JButton Parkingbtn8;
+    private javax.swing.JButton Parkingbtn9;
+    private javax.swing.JButton Salirbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

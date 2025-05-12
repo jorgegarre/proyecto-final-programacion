@@ -332,18 +332,15 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 pantalla.setVisible(true);
 
                 tipoCombustible = pantalla.getTipoCombustible();
-                
 
                 switch (tipoCombustible.trim().toUpperCase()) {
                     case "GASOLINA":
-                        
-                        
+
                         try {
                             // Crear objetos
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
 
-                           
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
 
@@ -368,6 +365,12 @@ public class aparcarVehiculo extends javax.swing.JFrame {
 
                             System.out.println("Vehículo registrado en la base de datos correctamente.");
 
+                            // Abrir la pantalla de elegir plaza
+                            ElegirPlaza elegirPlaza = new ElegirPlaza();
+                            elegirPlaza.setLocationRelativeTo(null);
+                            elegirPlaza.setVisible(true);
+                            this.dispose(); // Cierra la pantalla actual si ya no se necesita
+
                         } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
                             PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
                             pantallaExcept.setVisible(true);
@@ -381,7 +384,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         try {
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
-                            
 
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
@@ -397,7 +399,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         try {
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Hibrido_total coche = new Hibrido_total(matricula, pepe, marca, modelo, color);
-                            
 
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
@@ -412,7 +413,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         try {
                             Persona pepe = new Persona(nombreCompleto, dni);
                             Hibrido_enchufable coche = new Hibrido_enchufable(matricula, pepe, marca, modelo, color);
-                            
 
                             userNombreCompleto.setText(pepe.getNombreCompleto());
                             userDni.setText(pepe.getDni());
@@ -429,7 +429,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Moto moto = new Moto(matricula, pepe, marca, modelo, color);
-                    
 
                     userNombreCompleto.setText(pepe.getNombreCompleto());
                     userDni.setText(pepe.getDni());
@@ -450,7 +449,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Furgoneta furgoneta = new Furgoneta(longitud, matricula, pepe, marca, modelo, color);
-                    
 
                     userNombreCompleto.setText(pepe.getNombreCompleto());
                     userDni.setText(pepe.getDni());

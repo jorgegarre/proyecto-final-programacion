@@ -28,10 +28,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="Parkingbtn32" min="-2" pref="97" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
+                                  <Component id="Parkingbtn32" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="Parkingbtn28" min="-2" pref="97" max="-2" attributes="0"/>
@@ -44,32 +44,24 @@
                                               <Component id="Parkingbtn22" min="-2" pref="97" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="Parkingbtn30" min="-2" pref="97" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="Parkingbtn31" min="-2" pref="97" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="Parkingbtn23" min="-2" pref="97" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="Parkingbtn24" min="-2" pref="97" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                              <Component id="Parkingbtn25" min="-2" pref="97" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="Parkingbtn30" min="-2" pref="97" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="Parkingbtn31" min="-2" pref="97" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                                              <Component id="Salirbtn" min="-2" pref="189" max="-2" attributes="0"/>
+                                              <Component id="Parkingbtn23" min="-2" pref="97" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="Parkingbtn24" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="Parkingbtn25" min="-2" pref="97" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -81,13 +73,22 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Parkingbtn26" min="-2" pref="97" max="-2" attributes="0"/>
-                          <Component id="Parkingbtn33" min="-2" pref="97" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Parkingbtn34" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                          <Component id="Parkingbtn27" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Parkingbtn26" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="Parkingbtn33" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Parkingbtn34" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="Parkingbtn27" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="Salirbtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -107,7 +108,7 @@
               </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -126,8 +127,8 @@
                               <Component id="Parkingbtn16" min="-2" pref="59" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Parkingbtn7" min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="Parkingbtn17" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <Component id="Parkingbtn7" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="Parkingbtn17" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -161,8 +162,8 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="Parkingbtn20" pref="0" max="32767" attributes="0"/>
-                          <Component id="Parkingbtn10" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="Parkingbtn20" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="Parkingbtn10" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -187,28 +188,28 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Parkingbtn10" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn9" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn10" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn9" alignment="0" max="32767" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="Parkingbtn7" alignment="3" min="-2" pref="92" max="-2" attributes="0"/>
                       <Component id="Parkingbtn8" alignment="3" min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="Parkingbtn5" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn4" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn3" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn2" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn5" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn4" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn3" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn2" alignment="0" max="32767" attributes="0"/>
                   <Component id="Parkingbtn1" alignment="0" max="32767" attributes="0"/>
                   <Component id="Parkingbtn6" alignment="1" min="-2" pref="92" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Parkingbtn19" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn16" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn15" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn14" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn13" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn12" max="32767" attributes="0"/>
-                  <Component id="Parkingbtn11" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn19" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn16" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn15" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn14" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn13" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn12" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Parkingbtn11" alignment="0" max="32767" attributes="0"/>
                   <Component id="Parkingbtn20" alignment="0" max="32767" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="Parkingbtn17" alignment="3" min="-2" pref="92" max="-2" attributes="0"/>
@@ -239,7 +240,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Parkingbtn35" alignment="3" min="-2" pref="185" max="-2" attributes="0"/>
                   <Component id="Parkingbtn36" alignment="3" min="-2" pref="185" max="-2" attributes="0"/>
@@ -249,134 +250,68 @@
                   <Component id="Parkingbtn40" alignment="3" min="-2" pref="185" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-              <Component id="Salirbtn" min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="Salirbtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="Parkingbtn1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="1"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="2"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="3"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="4"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="5"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="6"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="7"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="8"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="9"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="10"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="24" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="PLAZAS DEL PARKING"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn11">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="11"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn12">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="12"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn13">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="13"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn14">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="14"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn15">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="15"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn16">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="16"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn20">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="20"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Parkingbtn19">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="19"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn17">
       <Properties>
         <Property name="text" type="java.lang.String" value="17"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn17ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PLAZAS DE COCHE"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn18">
       <Properties>
         <Property name="text" type="java.lang.String" value="18"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn18ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PLAZAS DE MOTO"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn21">
       <Properties>
         <Property name="text" type="java.lang.String" value="21"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn21ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PLAZAS DE FURGONETA"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn22">
       <Properties>
         <Property name="text" type="java.lang.String" value="22"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn22ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn23">
       <Properties>
@@ -398,6 +333,14 @@
         <Property name="text" type="java.lang.String" value="26"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="Salirbtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Volver al inicio"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalirbtnActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn27">
       <Properties>
         <Property name="text" type="java.lang.String" value="27"/>
@@ -408,10 +351,26 @@
         <Property name="text" type="java.lang.String" value="30"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="9"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn9ActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn31">
       <Properties>
         <Property name="text" type="java.lang.String" value="31"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="10"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn10ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn32">
       <Properties>
@@ -423,25 +382,66 @@
         <Property name="text" type="java.lang.String" value="33"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="24" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="PLAZAS DEL PARKING"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn34">
       <Properties>
         <Property name="text" type="java.lang.String" value="34"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="11"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn11ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn29">
       <Properties>
         <Property name="text" type="java.lang.String" value="29"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="12"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn12ActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn28">
       <Properties>
         <Property name="text" type="java.lang.String" value="28"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="13"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn13ActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn35">
       <Properties>
         <Property name="text" type="java.lang.String" value="35"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn14">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="14"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn14ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn36">
       <Properties>
@@ -449,6 +449,86 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn36ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="15"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn15ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn16">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="16"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn16ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="2"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="3"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn3ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="4"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn4ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="5"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn5ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="6"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn6ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="7"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn7ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="8"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn8ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn37">
@@ -461,47 +541,31 @@
         <Property name="text" type="java.lang.String" value="38"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn20">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="20"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn20ActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn39">
       <Properties>
         <Property name="text" type="java.lang.String" value="39"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="Parkingbtn19">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="19"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Parkingbtn19ActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="Parkingbtn40">
       <Properties>
         <Property name="text" type="java.lang.String" value="40"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="PLAZAS DE COCHE"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="PLAZAS DE MOTO"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="PLAZAS DE FURGONETA"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Salirbtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Volver al inicio"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalirbtnActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

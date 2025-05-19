@@ -3,7 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pantalla;
+
 import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfPCell;
+import java.io.FileOutputStream;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -30,13 +56,22 @@ public class Contabilidad extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         inicioBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtInforme = new javax.swing.JTextArea();
+        btnInforme = new javax.swing.JButton();
+        btnExportar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtTotalFacturacion = new javax.swing.JTextField();
+        btnInformePDF = new javax.swing.JButton();
+        btnCochesAparcados = new javax.swing.JButton();
+        btnOrdenar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setForeground(new java.awt.Color(102, 255, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Bienvenido a contabilidad");
+        jLabel1.setText("SALIDAS DEL PARKING");
 
         inicioBtn.setText("Volver al inicio");
         inicioBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -45,58 +80,393 @@ public class Contabilidad extends javax.swing.JFrame {
             }
         });
 
+        txtInforme.setColumns(20);
+        txtInforme.setRows(5);
+        jScrollPane1.setViewportView(txtInforme);
+
+        btnInforme.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        btnInforme.setText("Mostrar Informe");
+        btnInforme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformeActionPerformed(evt);
+            }
+        });
+
+        btnExportar.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        btnExportar.setText("Exportar informe");
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("TOTAL FACTURACIÓN:");
+
+        btnInformePDF.setText("Exportar Informe (PDF)");
+        btnInformePDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformePDFActionPerformed(evt);
+            }
+        });
+
+        btnCochesAparcados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCochesAparcados.setText("Mostrar coches aparcados");
+        btnCochesAparcados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCochesAparcadosActionPerformed(evt);
+            }
+        });
+
+        btnOrdenar.setText("Ordenar");
+        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(153, 153, 153)
                 .addComponent(jLabel1)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(inicioBtn)
-                .addGap(94, 94, 94))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTotalFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnInformePDF)
+                                            .addComponent(btnCochesAparcados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnOrdenar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inicioBtn)))
+                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnOrdenar)
+                        .addGap(17, 17, 17)
+                        .addComponent(btnCochesAparcados)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnInforme)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnExportar)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnInformePDF))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTotalFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inicioBtn)
-                .addContainerGap())
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 43, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioBtnActionPerformed
-        InicioScreen pantalla = new InicioScreen();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+//        InicioScreen pantalla = new InicioScreen();
+//        pantalla.setVisible(true);
+//        pantalla.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_inicioBtnActionPerformed
+
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+        // TODO add your handling code here:
+        // Ruta y nombre del archivo a exportar
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String fechaActual = sdf.format(new Date());
+
+        // Nombre del archivo con la fecha
+        String nombreArchivo = "INFORMES/SalidasParking-" + fechaActual + ".txt";
+
+        // Obtener el contenido del JTextArea (txtInforme)
+        String contenidoInforme = txtInforme.getText();
+
+        // Verificar que hay contenido
+        if (contenidoInforme.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "⚠️ No hay ningún informe para exportar.");
+            return;
+        }
+
+        // Intentar escribir el archivo
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            writer.write(contenidoInforme);
+            JOptionPane.showMessageDialog(null, "✅ Informe exportado correctamente a " + nombreArchivo);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al exportar el informe.");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnExportarActionPerformed
+
+    private void btnInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformeActionPerformed
+        // TODO add your handling code here:
+        StringBuilder informeCompleto = new StringBuilder();
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", ""); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM PARKING_SALIDA ORDER BY fecha_salida")) {
+
+            // Encabezado del informe
+            informeCompleto.append(String.format("%-5s %-15s %-17s %-17s %-20s\n",
+                    "ID", "Tiempo (min)", "Tarifa (€)", "Total (€)", "Fecha de salida"));
+            informeCompleto.append("\n");
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                int tiempo_parking = rs.getInt("Tiempo_Parking");
+                double tarifa_aplicada = rs.getDouble("Tarifa_aplicada");
+                double total_a_pagar = rs.getDouble("total_a_pagar");
+                String fecha_salida = rs.getString("fecha_salida");
+
+                // Añadir datos con formato tabulado
+                informeCompleto.append(String.format("%-5d %-15d %-17.2f %-17.2f %-20s\n",
+                        id, tiempo_parking, tarifa_aplicada, total_a_pagar, fecha_salida));
+            }
+            txtInforme.setEditable(false);
+
+            txtInforme.setText(informeCompleto.toString());
+
+        } catch (SQLException e) {
+            System.out.println("❌ Error al consultar la base de datos:");
+            e.printStackTrace();
+        }
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", ""); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT ROUND(SUM(TOTAL_A_PAGAR), 2) AS FACTURACION FROM PARKING_SALIDA;")) {
+
+            // Verificamos si hay resultados en el ResultSet
+            if (rs.next()) {
+                // Recuperamos el valor de FACTURACION
+                double facturacion = rs.getDouble("FACTURACION");
+
+                // Asignamos el valor a txtInforme
+                txtTotalFacturacion.setText(facturacion + " €");
+            } else {
+                txtTotalFacturacion.setText("No se encontró ningún dato.");
+            }
+            txtTotalFacturacion.setEditable(false);
+
+        } catch (SQLException e) {
+            System.out.println("❌ Error al consultar la base de datos:");
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_btnInformeActionPerformed
+
+    private void btnInformePDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformePDFActionPerformed
+        // TODO add your handling code here:
+        // Código existente para obtener la fecha y el nombre del archivo
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String fechaActual = sdf.format(new Date());
+
+        String nombreArchivo = "INFORMES/SalidasParking-" + fechaActual + ".pdf";
+
+        String contenidoInformeCheck = txtInforme.getText();
+        if (contenidoInformeCheck.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "⚠️ No hay ningún informe para exportar.");
+            return;
+        }
+
+        try {
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
+            document.open();
+
+            Font titleFont = new Font(Font.TIMES_ROMAN, 18, Font.BOLD);
+            Paragraph title = new Paragraph("Informe de Salidas de Parking", titleFont);
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+
+            PdfPTable table = new PdfPTable(5);
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(10f);
+            table.setSpacingAfter(10f);
+
+            float[] columnWidths = {1f, 2f, 2f, 2f, 3f};
+            table.setWidths(columnWidths);
+
+            Font headerFont = new Font(Font.TIMES_ROMAN, 11, Font.BOLD);
+            PdfPCell cell;
+
+            cell = new PdfPCell(new Phrase("ID", headerFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("Tiempo (min)", headerFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("Tarifa (€)", headerFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("Total (€)", headerFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("Fecha de salida", headerFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", ""); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM PARKING_SALIDA ORDER BY fecha_salida")) {
+
+                while (rs.next()) {
+                    int id = rs.getInt("ID");
+                    int tiempo_parking = rs.getInt("Tiempo_Parking");
+                    double tarifa_aplicada = rs.getDouble("Tarifa_aplicada");
+                    double total_a_pagar = rs.getDouble("total_a_pagar");
+                    String fecha_salida = rs.getString("fecha_salida");
+
+                    // Crear celdas para los datos y centrarlas
+                    PdfPCell dataCell;
+
+                    dataCell = new PdfPCell(new Phrase(String.valueOf(id)));
+                    dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(dataCell);
+
+                    dataCell = new PdfPCell(new Phrase(String.valueOf(tiempo_parking)));
+                    dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(dataCell);
+
+                    dataCell = new PdfPCell(new Phrase(String.format("%.2f", tarifa_aplicada)));
+                    dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(dataCell);
+
+                    dataCell = new PdfPCell(new Phrase(String.format("%.2f", total_a_pagar)));
+                    dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(dataCell);
+
+                    dataCell = new PdfPCell(new Phrase(fecha_salida));
+                    dataCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(dataCell);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            document.add(table);
+
+            document.close();
+            writer.close();
+
+            JOptionPane.showMessageDialog(null, "✅ Informe exportado correctamente a " + nombreArchivo);
+
+        } catch (DocumentException | IOException e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al exportar el informe a PDF.");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnInformePDFActionPerformed
+
+    private void btnCochesAparcadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCochesAparcadosActionPerformed
+        StringBuilder informeAparcados = new StringBuilder();
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", ""); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM APARCAMIENTO WHERE LIBRE = false ORDER BY FECHA_ENTRADA")) {
+
+            // Encabezado del informe
+            informeAparcados.append(String.format("%-10s %-15s %-15s %-10s %-20s\n",
+                    "Plaza", "Matrícula", "Tipo Plaza", "Tarifa", "Fecha Entrada"));
+            informeAparcados.append("\n");
+
+            while (rs.next()) {
+                int plaza = rs.getInt("N_PLAZA");
+                String matricula = rs.getString("MATRICULA");
+                String tipoPlaza = rs.getString("TIPO_PLAZA");
+                double tarifa = rs.getDouble("TARIFA_HORA");
+                String fechaEntrada = rs.getString("FECHA_ENTRADA");
+
+                informeAparcados.append(String.format("%-10d %-15s %-15s %-10.2f %-20s\n",
+                        plaza, matricula, tipoPlaza, tarifa, fechaEntrada));
+            }
+
+            txtInforme.setEditable(false);
+            txtInforme.setText(informeAparcados.toString());
+
+        } catch (SQLException e) {
+            System.out.println("❌ Error al consultar la base de datos:");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnCochesAparcadosActionPerformed
+
+    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<CocheOrdenar> coches = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", ""); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT N_PLAZA, MATRICULA, TIPO_PLAZA, TARIFA_HORA, PLAZACARGADORELECTRICO, FECHA_ENTRADA FROM APARCAMIENTO WHERE LIBRE = FALSE")) {
+
+            while (rs.next()) {
+                int plaza = rs.getInt("N_PLAZA");
+                String matricula = rs.getString("MATRICULA");
+                String tipoPlaza = rs.getString("TIPO_PLAZA");
+                double tarifa = rs.getDouble("TARIFA_HORA");
+                boolean electrico = rs.getBoolean("PLAZACARGADORELECTRICO");
+                String fechaEntrada = rs.getString("FECHA_ENTRADA");
+
+                // Usamos el nuevo constructor con todos los datos
+                coches.add(new CocheOrdenar(plaza, matricula, tipoPlaza, tarifa, electrico, fechaEntrada));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "❌ Error al consultar coches aparcados.");
+            return;
+        }
+
+        // Ordenamos por matrícula
+        coches.sort(Comparator.comparing(CocheOrdenar::getMatricula));
+
+        // Encabezado del informe
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%-10s %-15s %-15s %-10s %-20s\n",
+                "Plaza", "Matrícula", "Tipo Plaza", "Tarifa", "Fecha Entrada"));
+        sb.append("\n");
+
+        // Cuerpo del informe
+        for (CocheOrdenar c : coches) {
+            sb.append(String.format("%-10d %-15s %-15s %-10.2f %-20s\n",
+                    c.getPlaza(), c.getMatricula(), c.getTipoPlaza(), c.getTarifa(), c.getFechaEntrada()));
+        }
+
+        txtInforme.setText(sb.toString());
+    }//GEN-LAST:event_btnOrdenarActionPerformed
 
     /**
      * @param args the command line arguments
      */
- public static void main(String[] args) {
+    public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {
             Contabilidad pantalla = new Contabilidad();
             pantalla.setVisible(true);
@@ -105,8 +475,17 @@ public class Contabilidad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCochesAparcados;
+    private javax.swing.JButton btnExportar;
+    private javax.swing.JButton btnInforme;
+    private javax.swing.JButton btnInformePDF;
+    private javax.swing.JButton btnOrdenar;
     private javax.swing.JButton inicioBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtInforme;
+    private javax.swing.JTextField txtTotalFacturacion;
     // End of variables declaration//GEN-END:variables
 }

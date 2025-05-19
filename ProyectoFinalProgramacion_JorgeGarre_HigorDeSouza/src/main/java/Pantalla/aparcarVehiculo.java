@@ -8,7 +8,10 @@ import com.izv.proyectofinalprogramacion_jorgegarre_higordesouza.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +34,15 @@ public class aparcarVehiculo extends javax.swing.JFrame {
      */
     public aparcarVehiculo() {
         initComponents();
+    }
+
+    private void limpiarCampos() {
+        Matricula.setText("");
+        Marca.setText("");
+        Modelo.setText("");
+        Color.setText("");
+        Dni.setText("");
+        NombreCompleto.setText("");
     }
 
     /**
@@ -62,10 +74,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         NombreCompleto = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         Dni = new javax.swing.JTextField();
-        userNombreCompleto = new javax.swing.JTextField();
-        userDni = new javax.swing.JTextField();
         inicioBtn = new javax.swing.JButton();
-        showTipoVehiculo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,15 +162,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
             }
         });
 
-        userNombreCompleto.setText("Nombre Completo");
-        userNombreCompleto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNombreCompletoActionPerformed(evt);
-            }
-        });
-
-        userDni.setText("DNI");
-
         inicioBtn.setText("Volver al inicio");
         inicioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,9 +200,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(NombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Dni)
-                                            .addComponent(userNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                            .addComponent(userDni))
+                                            .addComponent(Dni))
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -215,10 +213,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                         .addGap(138, 138, 138)
                         .addComponent(jLabel6)
                         .addGap(55, 55, 55))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(showTipoVehiculo)
-                .addGap(157, 157, 157))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,15 +237,11 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jLabel7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,9 +257,7 @@ public class aparcarVehiculo extends javax.swing.JFrame {
                             .addComponent(inicioBtn))))
                 .addGap(5, 5, 5)
                 .addComponent(checkFurgoneta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(showTipoVehiculo)
-                .addGap(48, 48, 48))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -323,8 +311,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         dni = Dni.getText();
         nombreCompleto = NombreCompleto.getText();
 
-        showTipoVehiculo.setText(tipoVehiculo);
-
         switch (tipoVehiculo.toUpperCase()) {
             case "COCHE":
                 SeleccionarCombustibleVehiculo pantalla = new SeleccionarCombustibleVehiculo(this, this);
@@ -333,112 +319,182 @@ public class aparcarVehiculo extends javax.swing.JFrame {
 
                 tipoCombustible = pantalla.getTipoCombustible();
 
-                switch (tipoCombustible.trim().toUpperCase()) {
-                    case "GASOLINA":
+                try {
+                    Persona pepe = new Persona(nombreCompleto, dni);
+                    Vehiculo coche;
 
-                        try {
-                            // Crear objetos
-                            Persona pepe = new Persona(nombreCompleto, dni);
-                            Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
+                    switch (tipoCombustible.trim().toUpperCase()) {
+                        case "GASOLINA":
+                        case "DIESEL":
+                            coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
+                            break;
+                        case "HIBRIDO TOTAL":
+                            coche = new Hibrido_total(matricula, pepe, marca, modelo, color);
+                            break;
+                        case "HIBRIDO ENCHUFABLE":
+                            coche = new Hibrido_enchufable(matricula, pepe, marca, modelo, color);
+                            break;
+                        default:
+                            throw new BadCombustibleException("Tipo de combustible no válido: " + tipoCombustible);
+                    }
 
-                            userNombreCompleto.setText(pepe.getNombreCompleto());
-                            userDni.setText(pepe.getDni());
+                    Connection con = DriverManager.getConnection(
+                            "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
 
-                            // Guardar en la base de datos
-                            Connection con = DriverManager.getConnection(
-                                    "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
+                    String checkSql = "SELECT COUNT(*) FROM VEHICULOS_REGISTRADOS WHERE MATRICULA = ?";
+                    PreparedStatement checkStmt = con.prepareStatement(checkSql);
+                    checkStmt.setString(1, matricula);
+                    ResultSet rsCheck = checkStmt.executeQuery();
 
-                            String sql = "INSERT INTO VEHICULOS_REGISTRADOS (MATRICULA, COMBUSTIBLE, MARCA, MODELO, COLOR, NOMBRE_COMPLETO, DNI) "
-                                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-                            PreparedStatement ps = con.prepareStatement(sql);
-                            ps.setString(1, coche.getMatricula());
-                            ps.setString(2, coche.getCombustible());
-                            ps.setString(3, coche.getMarca());
-                            ps.setString(4, coche.getModelo());
-                            ps.setString(5, coche.getColor());
-                            ps.setString(6, pepe.getNombreCompleto());
-                            ps.setString(7, pepe.getDni());
-
-                            ps.executeUpdate();
-                            con.close();
-
-                            System.out.println("Vehículo registrado en la base de datos correctamente.");
-
-                            // Abrir la pantalla de elegir plaza
-                            ElegirPlaza elegirPlaza = new ElegirPlaza();
-                            elegirPlaza.setLocationRelativeTo(null);
-                            elegirPlaza.setVisible(true);
-                            this.dispose(); // Cierra la pantalla actual si ya no se necesita
-
-                        } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
-                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
-                            pantallaExcept.setVisible(true);
-                            pantallaExcept.setLocationRelativeTo(null);
-                        } catch (SQLException e) {
-                            e.printStackTrace(); // Mostrar errores de conexión o SQL
-                        }
-
+                    if (rsCheck.next() && rsCheck.getInt(1) > 0) {
+                        PantallaExcepciones excepcion = new PantallaExcepciones("Ya existe un vehículo registrado con la matrícula: " + matricula);
+                        excepcion.setLocationRelativeTo(null);
+                        excepcion.setVisible(true);
                         break;
-                    case "DIESEL":
-                        try {
-                            Persona pepe = new Persona(nombreCompleto, dni);
-                            Combustion coche = new Combustion(tipoCombustible, matricula, pepe, marca, modelo, color);
+                    }
 
-                            userNombreCompleto.setText(pepe.getNombreCompleto());
-                            userDni.setText(pepe.getDni());
+                    String sqlVehiculo = "INSERT INTO VEHICULOS_REGISTRADOS (MATRICULA, COMBUSTIBLE, MARCA, MODELO, COLOR, NOMBRE_COMPLETO, DNI) "
+                            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement psVehiculo = con.prepareStatement(sqlVehiculo);
+                    psVehiculo.setString(1, coche.getMatricula());
+                    psVehiculo.setString(2, tipoCombustible);
+                    psVehiculo.setString(3, coche.getMarca());
+                    psVehiculo.setString(4, coche.getModelo());
+                    psVehiculo.setString(5, coche.getColor());
+                    psVehiculo.setString(6, pepe.getNombreCompleto());
+                    psVehiculo.setString(7, pepe.getDni());
+                    psVehiculo.executeUpdate();
 
-                        } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
-                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
-                            pantallaExcept.setVisible(true);
+                    ElegirPlaza elegirPlaza = new ElegirPlaza(this);
+                    elegirPlaza.setLocationRelativeTo(null);
+                    elegirPlaza.setModal(true);
+                    elegirPlaza.setVisible(true);
 
-                            pantallaExcept.setLocationRelativeTo(null);
-                        }
+                    int plazaElegida = elegirPlaza.getPlazaSeleccionada();
+
+                    // Validación de plaza
+                    if (plazaElegida >= 21 && plazaElegida <= 34) {
+                        PantallaExcepciones excepcion = new PantallaExcepciones("No puedes aparcar en una plaza de motos");
+                        excepcion.setLocationRelativeTo(null);
+                        excepcion.setVisible(true);
                         break;
-                    case "HIBRIDO TOTAL":
-                        try {
-                            Persona pepe = new Persona(nombreCompleto, dni);
-                            Hibrido_total coche = new Hibrido_total(matricula, pepe, marca, modelo, color);
+                    }
 
-                            userNombreCompleto.setText(pepe.getNombreCompleto());
-                            userDni.setText(pepe.getDni());
+                    boolean esElectrico = tipoCombustible.equalsIgnoreCase("ELECTRICO") || tipoCombustible.equalsIgnoreCase("HIBRIDO ENCHUFABLE");
 
-                        } catch (IncorrectNameException | BadDniException | BadMatriculaException e) {
-                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
-                            pantallaExcept.setVisible(true);
-                            pantallaExcept.setLocationRelativeTo(null);
-                        }
-                        break;
-                    case "HIBRIDO ENCHUFABLE":
-                        try {
-                            Persona pepe = new Persona(nombreCompleto, dni);
-                            Hibrido_enchufable coche = new Hibrido_enchufable(matricula, pepe, marca, modelo, color);
+                    double tarifa = esElectrico ? 2.00 : 1.50;
+                    String tipoPlaza;
 
-                            userNombreCompleto.setText(pepe.getNombreCompleto());
-                            userDni.setText(pepe.getDni());
+                    if (plazaElegida >= 1 && plazaElegida <= 20) {
+                        tipoPlaza = "COCHE";
+                    } else if (plazaElegida >= 35 && plazaElegida <= 40) {
+                        tipoPlaza = "FURGONETA";
+                        tarifa *= 2;  // tarifa doble por usar plaza de furgoneta
+                        PantallaExcepciones aviso = new PantallaExcepciones("Has aparcado en una plaza de furgonetas. La tarifa se duplica.");
+                        aviso.setLocationRelativeTo(null);
+                        aviso.setVisible(true);
+                    } else {
+                        tipoPlaza = "DESCONOCIDA"; // por si hay otras plazas
+                    }
 
-                        } catch (IncorrectNameException | BadDniException | BadMatriculaException e) {
-                            PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
-                            pantallaExcept.setVisible(true);
-                            pantallaExcept.setLocationRelativeTo(null);
-                        }
-                        break;
+                    String sqlAparcamiento = "INSERT INTO APARCAMIENTO (N_PLAZA, LIBRE, MATRICULA, TIPO_PLAZA, TARIFA_HORA, PLAZACARGADORELECTRICO) "
+                            + "VALUES (?, FALSE, ?, ?, ?, ?)";
+                    PreparedStatement psAparcamiento = con.prepareStatement(sqlAparcamiento);
+                    psAparcamiento.setInt(1, plazaElegida);
+                    psAparcamiento.setString(2, coche.getMatricula());
+                    psAparcamiento.setString(3, tipoPlaza);
+                    psAparcamiento.setDouble(4, tarifa);
+                    psAparcamiento.setBoolean(5, esElectrico);
+
+                    psAparcamiento.executeUpdate();
+                    con.close();
+
+                    System.out.println("Vehículo y plaza registrados correctamente.");
+                    limpiarCampos();
+
+                } catch (IncorrectNameException | BadDniException | BadMatriculaException | BadCombustibleException e) {
+                    PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
+                    pantallaExcept.setVisible(true);
+                    pantallaExcept.setLocationRelativeTo(null);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (Exception ex) {
+                    Logger.getLogger(aparcarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
+
             case "MOTO":
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Moto moto = new Moto(matricula, pepe, marca, modelo, color);
 
-                    userNombreCompleto.setText(pepe.getNombreCompleto());
-                    userDni.setText(pepe.getDni());
+                    Connection con = DriverManager.getConnection(
+                            "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
 
-                } catch (IncorrectNameException | BadDniException | BadMatriculaException e) {
+                    String checkSql = "SELECT COUNT(*) FROM VEHICULOS_REGISTRADOS WHERE MATRICULA = ?";
+                    PreparedStatement checkStmt = con.prepareStatement(checkSql);
+                    checkStmt.setString(1, matricula);
+                    ResultSet rsCheck = checkStmt.executeQuery();
+
+                    if (rsCheck.next() && rsCheck.getInt(1) > 0) {
+                        PantallaExcepciones excepcion = new PantallaExcepciones("Ya existe un vehículo registrado con la matrícula: " + matricula);
+                        excepcion.setLocationRelativeTo(null);
+                        excepcion.setVisible(true);
+                        break;
+                    }
+
+                    String sqlVehiculo = "INSERT INTO VEHICULOS_REGISTRADOS (MATRICULA, COMBUSTIBLE, MARCA, MODELO, COLOR, NOMBRE_COMPLETO, DNI) "
+                            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement psVehiculo = con.prepareStatement(sqlVehiculo);
+                    psVehiculo.setString(1, moto.getMatricula());
+                    psVehiculo.setString(2, "MOTO"); // Puedes cambiar si tienes subtipos
+                    psVehiculo.setString(3, moto.getMarca());
+                    psVehiculo.setString(4, moto.getModelo());
+                    psVehiculo.setString(5, moto.getColor());
+                    psVehiculo.setString(6, pepe.getNombreCompleto());
+                    psVehiculo.setString(7, pepe.getDni());
+
+                    psVehiculo.executeUpdate();
+
+                    // Elegir plaza
+                    ElegirPlaza elegirPlaza = new ElegirPlaza(this);
+                    elegirPlaza.setLocationRelativeTo(null);
+                    elegirPlaza.setModal(true);
+                    elegirPlaza.setVisible(true);
+
+                    int plazaElegida = elegirPlaza.getPlazaSeleccionada();
+
+                    // Validaciones de plaza
+                    if (plazaElegida <= 21 && plazaElegida >= 34) {
+                        PantallaExcepciones excepcion = new PantallaExcepciones("No puedes aparcar en una plaza que no sea de motos");
+                        excepcion.setLocationRelativeTo(null);
+                        excepcion.setVisible(true);
+                        break;
+                    }
+
+                    // Registrar aparcamiento
+                    String sqlAparcamiento = "INSERT INTO APARCAMIENTO (N_PLAZA, LIBRE, MATRICULA, TIPO_PLAZA, TARIFA_HORA, PLAZACARGADORELECTRICO) "
+                            + "VALUES (?, FALSE, ?, ?, ?, ?)";
+                    PreparedStatement psAparcamiento = con.prepareStatement(sqlAparcamiento);
+                    psAparcamiento.setInt(1, plazaElegida);
+                    psAparcamiento.setString(2, moto.getMatricula());
+                    psAparcamiento.setString(3, "MOTO");
+                    psAparcamiento.setDouble(4, 1.00); // Tarifa para motos
+                    psAparcamiento.setBoolean(5, false);
+
+                    psAparcamiento.executeUpdate();
+                    con.close();
+
+                    System.out.println("Moto y plaza registradas correctamente.");
+                    limpiarCampos();
+
+                } catch (IncorrectNameException | BadDniException | BadMatriculaException | SQLException e) {
                     PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
                     pantallaExcept.setVisible(true);
                     pantallaExcept.setLocationRelativeTo(null);
                 }
                 break;
+
             case "FURGONETA":
                 SeleccionarLongitudFurgoneta pantallaLongitud = new SeleccionarLongitudFurgoneta(this, this);
                 pantallaLongitud.setLocationRelativeTo(null);
@@ -446,25 +502,100 @@ public class aparcarVehiculo extends javax.swing.JFrame {
 
                 longitud = pantallaLongitud.getLongitud();
 
+                // Validación de longitud antes de continuar
+                if (longitud > 400) {
+                    PantallaExcepciones excepcion = new PantallaExcepciones("La furgoneta excede la longitud máxima permitida (400 cm).");
+                    excepcion.setLocationRelativeTo(null);
+                    excepcion.setVisible(true);
+                    break;
+                }
+
                 try {
                     Persona pepe = new Persona(nombreCompleto, dni);
                     Furgoneta furgoneta = new Furgoneta(longitud, matricula, pepe, marca, modelo, color);
 
-                    userNombreCompleto.setText(pepe.getNombreCompleto());
-                    userDni.setText(pepe.getDni());
+                    Connection con = DriverManager.getConnection(
+                            "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
 
-                } catch (IncorrectNameException | BadDniException | BadMatriculaException | FurgonetaDeMayorLongitudException e) {
+                    // Verificar si la matrícula ya existe
+                    String checkSql = "SELECT COUNT(*) FROM VEHICULOS_REGISTRADOS WHERE MATRICULA = ?";
+                    PreparedStatement checkStmt = con.prepareStatement(checkSql);
+                    checkStmt.setString(1, matricula);
+                    ResultSet rsCheck = checkStmt.executeQuery();
+
+                    if (rsCheck.next() && rsCheck.getInt(1) > 0) {
+                        PantallaExcepciones excepcion = new PantallaExcepciones("Ya existe un vehículo registrado con la matrícula: " + matricula);
+                        excepcion.setLocationRelativeTo(null);
+                        excepcion.setVisible(true);
+                        con.close();
+                        break;
+                    }
+
+                    // Elegir plaza
+                    ElegirPlaza elegirPlaza = new ElegirPlaza(this);
+                    elegirPlaza.setLocationRelativeTo(null);
+                    elegirPlaza.setModal(true);
+                    elegirPlaza.setVisible(true);
+
+                    int plazaElegida = elegirPlaza.getPlazaSeleccionada();
+
+                    // Validaciones de plaza
+                    if (plazaElegida >= 21 && plazaElegida <= 34) {
+                        PantallaExcepciones excepcion = new PantallaExcepciones("No puedes aparcar en una plaza de motos");
+                        excepcion.setLocationRelativeTo(null);
+                        excepcion.setVisible(true);
+                        con.close();
+                        break;
+                    }
+
+                    if (plazaElegida <= 20) {
+                        PantallaExcepciones advertencia = new PantallaExcepciones("Has elegido una plaza para coches. Asegúrate de que tu furgoneta cabe correctamente.");
+                        advertencia.setLocationRelativeTo(null);
+                        advertencia.setVisible(true);
+                        con.close();
+                        break;
+                    }
+
+                    // Insertar vehículo
+                    String sqlVehiculo = "INSERT INTO VEHICULOS_REGISTRADOS (MATRICULA, COMBUSTIBLE, MARCA, MODELO, COLOR, NOMBRE_COMPLETO, DNI) "
+                            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement psVehiculo = con.prepareStatement(sqlVehiculo);
+                    psVehiculo.setString(1, furgoneta.getMatricula());
+                    psVehiculo.setString(2, "FURGONETA");
+                    psVehiculo.setString(3, furgoneta.getMarca());
+                    psVehiculo.setString(4, furgoneta.getModelo());
+                    psVehiculo.setString(5, furgoneta.getColor());
+                    psVehiculo.setString(6, pepe.getNombreCompleto());
+                    psVehiculo.setString(7, pepe.getDni());
+                    psVehiculo.executeUpdate();
+
+                    // Insertar en aparcamiento
+                    String sqlAparcamiento = "INSERT INTO APARCAMIENTO (N_PLAZA, LIBRE, MATRICULA, TIPO_PLAZA, TARIFA_HORA, PLAZACARGADORELECTRICO) "
+                            + "VALUES (?, FALSE, ?, ?, ?, ?)";
+                    PreparedStatement psAparcamiento = con.prepareStatement(sqlAparcamiento);
+                    psAparcamiento.setInt(1, plazaElegida);
+                    psAparcamiento.setString(2, furgoneta.getMatricula());
+                    psAparcamiento.setString(3, "FURGONETA");
+                    psAparcamiento.setDouble(4, 2.50); // Tarifa para furgoneta
+                    psAparcamiento.setBoolean(5, false); // No tiene cargador eléctrico
+
+                    psAparcamiento.executeUpdate();
+                    con.close();
+
+                    System.out.println("Furgoneta y plaza registradas correctamente.");
+                    limpiarCampos();
+
+                } catch (IncorrectNameException | BadDniException | BadMatriculaException | FurgonetaDeMayorLongitudException | SQLException e) {
                     PantallaExcepciones pantallaExcept = new PantallaExcepciones(e.getMessage());
                     pantallaExcept.setVisible(true);
                     pantallaExcept.setLocationRelativeTo(null);
                 }
                 break;
+
             default:
-                System.out.println("Tipo de combustible no reconocido: " + tipoCombustible);
+                System.out.println("Tipo de vehículo no reconocido: " + tipoVehiculo);
                 break;
-
         }
-
 
     }//GEN-LAST:event_BotonActionPerformed
 
@@ -479,10 +610,6 @@ public class aparcarVehiculo extends javax.swing.JFrame {
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
         this.dispose();    }//GEN-LAST:event_inicioBtnActionPerformed
-
-    private void userNombreCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNombreCompletoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNombreCompletoActionPerformed
 
     public void setTipoCombustible(String tipoCombustible) {
         this.tipoCombustible = tipoCombustible;
@@ -523,8 +650,5 @@ public class aparcarVehiculo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel showTipoVehiculo;
-    private javax.swing.JTextField userDni;
-    private javax.swing.JTextField userNombreCompleto;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package Pantalla;
 
 import java.awt.Color;
+import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,13 +14,15 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author jorge
  */
-public class ElegirPlaza extends javax.swing.JFrame {
+public class ElegirPlaza extends JDialog {
+
 
     private int plazaSeleccionada = -1;
 
@@ -28,13 +31,56 @@ public class ElegirPlaza extends javax.swing.JFrame {
     /**
      * Creates new form ElegirPlaza
      */
-    public ElegirPlaza() {
-        initComponents();
+  public ElegirPlaza(Frame parent) {
+    super(parent, true); // true = modal
+    initComponents();
+    cargarPlazas();
+}
+    
+    private void cargarPlazas() {
+    Map<Integer, JButton> botonesPlazas = new HashMap<>();
+
+    // Asociar botones automáticamente usando reflexión
+    for (int i = 1; i <= 40; i++) {
+        try {
+            JButton boton = (JButton) this.getClass().getDeclaredField("Parkingbtn" + i).get(this);
+            botonesPlazas.put(i, boton);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            System.err.println("No se pudo acceder al botón Parkingbtn" + i + ": " + e.getMessage());
+        }
     }
 
+    // Todas verdes (libres)
+    for (JButton boton : botonesPlazas.values()) {
+        boton.setBackground(Color.GREEN);
+        boton.setOpaque(true);
+    }
+
+    // Marcar ocupadas en rojo
+    try (Connection conn = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
+         PreparedStatement stmt = conn.prepareStatement("SELECT N_PLAZA FROM APARCAMIENTO WHERE LIBRE = FALSE");
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            int plaza = rs.getInt("N_PLAZA");
+            JButton boton = botonesPlazas.get(plaza);
+            if (boton != null) {
+                boton.setBackground(Color.RED);
+            }
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+    
     private boolean plazaOcupada(int numeroPlaza) {
     try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTION_PARKING_HJ", "root", "");
-         PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM APARCAR WHERE N_PLAZA = ?")) {
+         PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM APARCAMIENTO WHERE N_PLAZA = ?")) {
 
         stmt.setInt(1, numeroPlaza);
         try (ResultSet rs = stmt.executeQuery()) {
@@ -91,7 +137,6 @@ public int getPlazaSeleccionada() {
         Parkingbtn13 = new javax.swing.JButton();
         Parkingbtn35 = new javax.swing.JButton();
         Parkingbtn14 = new javax.swing.JButton();
-        Parkingbtn36 = new javax.swing.JButton();
         Parkingbtn15 = new javax.swing.JButton();
         Parkingbtn16 = new javax.swing.JButton();
         Parkingbtn1 = new javax.swing.JButton();
@@ -108,8 +153,9 @@ public int getPlazaSeleccionada() {
         Parkingbtn39 = new javax.swing.JButton();
         Parkingbtn19 = new javax.swing.JButton();
         Parkingbtn40 = new javax.swing.JButton();
+        Parkingbtn36 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Parkingbtn17.setText("17");
         Parkingbtn17.addActionListener(new java.awt.event.ActionListener() {
@@ -149,12 +195,32 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn23.setText("23");
+        Parkingbtn23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn23ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn24.setText("24");
+        Parkingbtn24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn24ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn25.setText("25");
+        Parkingbtn25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn25ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn26.setText("26");
+        Parkingbtn26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn26ActionPerformed(evt);
+            }
+        });
 
         Salirbtn.setText("Volver al inicio");
         Salirbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -164,8 +230,18 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn27.setText("27");
+        Parkingbtn27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn27ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn30.setText("30");
+        Parkingbtn30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn30ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn9.setText("9");
         Parkingbtn9.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +251,11 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn31.setText("31");
+        Parkingbtn31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn31ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn10.setText("10");
         Parkingbtn10.addActionListener(new java.awt.event.ActionListener() {
@@ -184,14 +265,29 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn32.setText("32");
+        Parkingbtn32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn32ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn33.setText("33");
+        Parkingbtn33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn33ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PLAZAS DEL PARKING");
 
         Parkingbtn34.setText("34");
+        Parkingbtn34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn34ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn11.setText("11");
         Parkingbtn11.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +297,11 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn29.setText("29");
+        Parkingbtn29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn29ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn12.setText("12");
         Parkingbtn12.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +311,11 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn28.setText("28");
+        Parkingbtn28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn28ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn13.setText("13");
         Parkingbtn13.addActionListener(new java.awt.event.ActionListener() {
@@ -219,18 +325,16 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn35.setText("35");
+        Parkingbtn35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn35ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn14.setText("14");
         Parkingbtn14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Parkingbtn14ActionPerformed(evt);
-            }
-        });
-
-        Parkingbtn36.setText("36");
-        Parkingbtn36.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Parkingbtn36ActionPerformed(evt);
             }
         });
 
@@ -305,8 +409,18 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn37.setText("37");
+        Parkingbtn37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn37ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn38.setText("38");
+        Parkingbtn38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn38ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn20.setText("20");
         Parkingbtn20.addActionListener(new java.awt.event.ActionListener() {
@@ -316,6 +430,11 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn39.setText("39");
+        Parkingbtn39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn39ActionPerformed(evt);
+            }
+        });
 
         Parkingbtn19.setText("19");
         Parkingbtn19.addActionListener(new java.awt.event.ActionListener() {
@@ -325,6 +444,18 @@ public int getPlazaSeleccionada() {
         });
 
         Parkingbtn40.setText("40");
+        Parkingbtn40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn40ActionPerformed(evt);
+            }
+        });
+
+        Parkingbtn36.setText("36");
+        Parkingbtn36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Parkingbtn36ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -379,13 +510,13 @@ public int getPlazaSeleccionada() {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(130, 130, 130)
                                 .addComponent(Salirbtn)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 6, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(Parkingbtn35, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGap(37, 37, 37)
                         .addComponent(Parkingbtn36, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Parkingbtn37, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94)
                         .addComponent(Parkingbtn38, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -505,15 +636,15 @@ public int getPlazaSeleccionada() {
                     .addComponent(Parkingbtn34))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Parkingbtn35, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Parkingbtn36, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Parkingbtn37, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Parkingbtn38, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Parkingbtn39, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Parkingbtn40, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addComponent(Parkingbtn40, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Parkingbtn36, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
                 .addComponent(Salirbtn)
                 .addGap(65, 65, 65))
         );
@@ -527,10 +658,6 @@ public int getPlazaSeleccionada() {
         pantalla.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_SalirbtnActionPerformed
-
-    private void Parkingbtn36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn36ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Parkingbtn36ActionPerformed
 
     private void Parkingbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn1ActionPerformed
     int numeroPlaza = 1;
@@ -772,11 +899,245 @@ public int getPlazaSeleccionada() {
 
     private void Parkingbtn21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn21ActionPerformed
         // TODO add your handling code here:
+        int numeroPlaza = 21;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
     }//GEN-LAST:event_Parkingbtn21ActionPerformed
 
     private void Parkingbtn22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn22ActionPerformed
         // TODO add your handling code here:
+    int numeroPlaza = 22;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
     }//GEN-LAST:event_Parkingbtn22ActionPerformed
+
+    private void Parkingbtn23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn23ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 23;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn23ActionPerformed
+
+    private void Parkingbtn24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn24ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 24;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn24ActionPerformed
+
+    private void Parkingbtn25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn25ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 25;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn25ActionPerformed
+
+    private void Parkingbtn26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn26ActionPerformed
+        // TODO add your handling code here:
+        int numeroPlaza = 26;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn26ActionPerformed
+
+    private void Parkingbtn27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn27ActionPerformed
+        // TODO add your handling code here:
+            int numeroPlaza = 27;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn27ActionPerformed
+
+    private void Parkingbtn28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn28ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 28;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn28ActionPerformed
+
+    private void Parkingbtn29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn29ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 29;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn29ActionPerformed
+
+    private void Parkingbtn30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn30ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 30;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn30ActionPerformed
+
+    private void Parkingbtn31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn31ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 31;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn31ActionPerformed
+
+    private void Parkingbtn32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn32ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 32;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn32ActionPerformed
+
+    private void Parkingbtn33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn33ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 33;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+                                            
+
+    }//GEN-LAST:event_Parkingbtn33ActionPerformed
+
+    private void Parkingbtn34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn34ActionPerformed
+        // TODO add your handling code here:
+ int numeroPlaza = 34;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn34ActionPerformed
+
+    private void Parkingbtn35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn35ActionPerformed
+        // TODO add your handling code here:
+         int numeroPlaza = 35;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn35ActionPerformed
+
+    private void Parkingbtn37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn37ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 37;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn37ActionPerformed
+
+    private void Parkingbtn38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn38ActionPerformed
+        // TODO add your handling code here:
+        int numeroPlaza = 38;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn38ActionPerformed
+
+    private void Parkingbtn39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn39ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 39;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn39ActionPerformed
+
+    private void Parkingbtn40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn40ActionPerformed
+        // TODO add your handling code here:
+        int numeroPlaza = 40;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn40ActionPerformed
+
+    private void Parkingbtn36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Parkingbtn36ActionPerformed
+        // TODO add your handling code here:
+    int numeroPlaza = 36;
+
+    if (plazaOcupada(numeroPlaza)) {
+        JOptionPane.showMessageDialog(this, "La plaza " + numeroPlaza + " ya está ocupada.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+    } else {
+        plazaSeleccionada = numeroPlaza;
+        this.dispose(); // Cierra la ventana después de seleccionar
+    }
+    }//GEN-LAST:event_Parkingbtn36ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -806,11 +1167,11 @@ public int getPlazaSeleccionada() {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ElegirPlaza().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ElegirPlaza().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

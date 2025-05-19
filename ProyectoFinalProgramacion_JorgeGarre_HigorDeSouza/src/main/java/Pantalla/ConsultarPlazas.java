@@ -27,16 +27,16 @@ public class ConsultarPlazas extends javax.swing.JFrame {
     }
 private void cargarPlazas() {
     Map<Integer, JButton> botonesPlazas = new HashMap<>();
-    botonesPlazas.put(1, Parkingbtn1);
-    botonesPlazas.put(2, Parkingbtn2);
-    botonesPlazas.put(3, Parkingbtn3);
-    botonesPlazas.put(4, Parkingbtn4);
-    botonesPlazas.put(5, Parkingbtn5);
-    botonesPlazas.put(6, Parkingbtn6);
-    botonesPlazas.put(7, Parkingbtn7);
-    botonesPlazas.put(8, Parkingbtn8);
-    botonesPlazas.put(9, Parkingbtn9);
-    botonesPlazas.put(10, Parkingbtn10);
+
+    // Asociar botones automáticamente usando reflexión
+    for (int i = 1; i <= 40; i++) {
+        try {
+            JButton boton = (JButton) this.getClass().getDeclaredField("Parkingbtn" + i).get(this);
+            botonesPlazas.put(i, boton);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            System.err.println("No se pudo acceder al botón Parkingbtn" + i + ": " + e.getMessage());
+        }
+    }
 
     // Todas verdes (libres)
     for (JButton boton : botonesPlazas.values()) {
@@ -63,6 +63,7 @@ private void cargarPlazas() {
         JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+
 
 private Map<Integer, JButton> botonesPlazas = new HashMap<>();
     /**

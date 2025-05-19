@@ -75,8 +75,6 @@
                                               <Component id="NombreCompleto" pref="119" max="32767" attributes="0"/>
                                               <Component id="jLabel8" min="-2" pref="95" max="-2" attributes="0"/>
                                               <Component id="Dni" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="userNombreCompleto" alignment="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="userDni" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
@@ -99,11 +97,6 @@
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="showTipoVehiculo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -134,17 +127,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Modelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userNombreCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="Modelo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Color" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userDni" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="Color" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -164,9 +151,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="checkFurgoneta" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
-                  <Component id="showTipoVehiculo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace pref="134" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -286,19 +271,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DniActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="userNombreCompleto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre Completo"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userNombreCompletoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="userDni">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="DNI"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="inicioBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver al inicio"/>
@@ -306,8 +278,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inicioBtnActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="showTipoVehiculo">
         </Component>
       </SubComponents>
     </Container>

@@ -11,41 +11,26 @@ package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
  */
 public class Persona {
     
-    private final byte MINEDAD = 16;
-    private final byte MAXEDAD = 80;
-    
     // Atributos
-    protected String nombre;
-    protected String apellido;
+    protected String NombreCompleto;
     protected String dni;
-    protected byte edad;
+    
     
     
     
     // Métodos
     
-    public Persona(String nombre, String apellido, String dni, byte edad) throws IncorrectNameException, BadAgeException, BadDniException {
-        setNombre(nombre);
-        setApellido(apellido);
+    public Persona(String nombre, String dni) throws IncorrectNameException, BadDniException {
+        setNombreCompleto(nombre);
         setDni(dni);
-        setEdad(edad);
     }
 
-    public void setNombre(String nombre) throws IncorrectNameException {
+    public void setNombreCompleto(String nombre) throws IncorrectNameException {
         if(nombre.equals("")) throw new IncorrectNameException("Nombre no valido");
-        else this.nombre = nombre;
+        else this.NombreCompleto = nombre;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public void setEdad(byte edad) throws BadAgeException {
-        // Comprueba si la edad esta entre 0 y 120
-        // y si no lanza una excepción
-        if (edad >= MINEDAD && edad <= MAXEDAD) this.edad = edad;
-        else throw new BadAgeException("Edad introducida no valida, debe estar entre 16 y 80");
-    }
+ 
 
     // Chequear si un dni es correcto o no 
     public boolean checkDni(String myDni) {
@@ -79,27 +64,20 @@ public class Persona {
         }
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return NombreCompleto;
     }
-
-    public String getApellido() {
-        return apellido;
-    }
-
+    
     public String getDni() {
         return dni;
     }
 
-    public byte getEdad() {
-        return edad;
-    }
 
     
     
     @Override
     public String toString() {
-        return nombre + " " + apellido + " con dni " + dni + " tiene " + edad + " años ";
+        return NombreCompleto + " con dni " + dni;
     }
 
 

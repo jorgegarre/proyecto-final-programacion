@@ -4,8 +4,9 @@
 
 package com.izv.proyectofinalprogramacion_jorgegarre_higordesouza;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import Pantalla.*;
+
 
 /**
  *
@@ -47,29 +48,16 @@ public class ProyectoFinalProgramacion_JorgeGarre_HigorDeSouza {
 //        for (Coche coche : coches) {
 //            System.out.println(coche);
 //        }
-//
+// insertarVehiculo panta = new insertarVehiculo();
 
- try {
-            // Crear una persona (dueño del coche)
-            Persona dueño = new Persona("Carlos", "Pérez", "12345678A", (byte) 30);
+    InicioScreen panta = new InicioScreen();
+    panta.setVisible(true);
+    panta.setLocationRelativeTo(null);
 
-            // Crear un coche de combustión
-            Combustion coche = new Combustion("Gasolin", "1234ABC", dueño, "Toyota", "Corolla", "Rojo");
-
-            // Opcionalmente puedes usar setCombustible para validar (aunque ya lo pusiste en el constructor)
-            coche.setCombustible("Gasolina"); // o "Diesel"
-
-            // Mostrar información del coche
-            System.out.println("Coche creado:");
-            System.out.println(coche.toString());
-            System.out.println("Tipo de combustible: " + coche.getCombustible());
-
-        } catch (BadAgeException | BadDniException | IncorrectNameException | BadMatriculaException | BadCombustibleException e) {
-            System.out.println("Error al crear el coche: " + e.getMessage());
-        }
-    }
+    
     
     }
+}
     
     
 

@@ -14,10 +14,6 @@ public abstract class Coche extends Vehiculo {
         super(matricula, dueño, marca, modelo, color, "Coche");
     }
 
-    @Override
-    public String toString() {
-        return "El coche con matrícula " + matricula + " su dueño es " + dueño + " es un " + marca +  modelo + " de color " + color;
-    }
-  
+    
     
 }
